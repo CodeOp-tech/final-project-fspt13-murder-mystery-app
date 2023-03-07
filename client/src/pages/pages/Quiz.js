@@ -1,24 +1,17 @@
-import { useRouter } from 'next/router'
-
+import { useRouter } from "next/router";
 
 export default function Quiz() {
-    const router = useRouter()
+  const router = useRouter();
 
-    
-    return ( 
+  return (
     <>
+      <div className="quiz">
+        <h1>Quiz</h1>
 
-    <div className="quiz">
-    
-    <h1>Quiz</h1>
-
-    <button type="button" onClick={() => router.push('/reveal')}>Click Me</button>
-
-    </div>
-
+        <button type="button" onClick={() => router.push("/reveal")}>
+          Click Me
+        </button>
+      </div>
     </>
-
-    )
-
-    
+  );
 }
