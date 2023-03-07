@@ -19,6 +19,8 @@ const gameFetch = () => {
     fetchEntries();
   }, []);
 
+}
+
   const gameCharacters = elements.filter(character => element.cha === "true") 
 
   const gameQuestions = elements.filter(question => element.questi === "true")
