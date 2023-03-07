@@ -18,7 +18,7 @@ router.get("/characters", async function (req, res, next) {
   }
 });
 
-/GET one entry
+//GET one entry
 
 router.get("/:id", async function (req, res, next) {
   const params = req.params;
