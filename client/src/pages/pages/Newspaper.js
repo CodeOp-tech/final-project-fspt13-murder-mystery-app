@@ -7,7 +7,7 @@ export default function Newspaper() {
       <div className="newspaper">
         <h1>Newspaper</h1>
 
-        <button type="button" onClick={() => router.push("pages/suspects")}>
+        <button type="button" onClick={() => router.push("/pages/suspects")}>
           Click Me
         </button>
       </div>

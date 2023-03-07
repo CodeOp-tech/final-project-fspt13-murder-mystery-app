@@ -7,7 +7,7 @@ export default function Cases() {
       <div className="cases">
         <h1>Case Choice</h1>
 
-        <button type="button" onClick={() => router.push("pages/newspaper")}>
+        <button type="button" onClick={() => router.push("/pages/newspaper")}>
           Click Me
         </button>
       </div>

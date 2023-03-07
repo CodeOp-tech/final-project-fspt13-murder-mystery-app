@@ -8,7 +8,7 @@ export default function Quiz() {
       <div className="quiz">
         <h1>Quiz</h1>
 
-        <button type="button" onClick={() => router.push("pages/reveal")}>
+        <button type="button" onClick={() => router.push("/pages/reveal")}>
           Click Me
         </button>
       </div>

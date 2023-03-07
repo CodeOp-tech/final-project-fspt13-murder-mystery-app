@@ -7,7 +7,7 @@ export default function Home() {
       <div className="homepage">
         <h1>Murder Mystery</h1>
 
-        <button type="button" onClick={() => router.push("pages/cases")}>
+        <button type="button" onClick={() => router.push("/pages/cases")}>
           Click Me
         </button>
       </div>
