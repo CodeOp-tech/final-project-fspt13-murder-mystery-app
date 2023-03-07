@@ -5,20 +5,20 @@
 
 
 const gameFetch = () => {
-  const [characters, setEntries] = useState([]);
+  const [elements, setEntries] = useState([]);
   
 
   useEffect(() => {
     const fetchEntries = async () => {
       const response = await fetch('http://localhost:5050/characters')
-      const mountains = await response.json();
+      const elements = await response.json();
 
-      setEntries(mountains)
+      setEntries(elements)
     }
 
     fetchEntries();
   }, []);
 
-  const scotlandMountains = mountains.filter(mountain => mountain.country === "Scotland") 
+  const gameCharacters = elements.filter(character => element.cha === "true") 
 
-  const englandMountains = mountains.filter(mountain => mountain.country === "England")
+  const gameQuestions = elements.filter(question => element.questi === "true")

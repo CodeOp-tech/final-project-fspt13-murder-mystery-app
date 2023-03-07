@@ -1,23 +1,21 @@
 DROP TABLE IF EXISTS characters;
 
-CREATE TABLE gameElements (
+CREATE TABLE codeQuestions (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    cha BOOLEAN,
-    names VARCHAR(100) NOT NULL,
-    biography VARCHAR(500) NOT NULL,
-    motive VARCHAR(500) NOT NULL,
-    qu BOOLEAN,
     question VARCHAR(100),NOT NULL,
-    answer VARCHER(300), NOT NULL
+    answerA BOOLEAN
+    answerB BOOLEAN
+    answerC BOOLEAN
+    answerD BOOLEAN
 );
  INSERT INTO gameElements (character, names, biography, motive
  ) VALUES (
     
     "Holly",
     "Lives in London and has a pet dog",
-    "The person stole her dog's favourite toy",
+    "The person stole her dog's favourite toy"
     "ffe",
-    "45345"
+    "true"
  );
 
  INSERT INTO characters (names, biography, motive
@@ -28,6 +26,6 @@ CREATE TABLE gameElements (
     "The person cast a spell to make the sky permanently grey",
     "hgfhgfhg",
     "hgfhgfhg"
- );
+ )
 
 
