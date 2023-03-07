@@ -49,7 +49,7 @@ export default function Suspects() {
           <br></br>
         </div>
 
-        <button type="button" onClick={() => router.push("/quiz")}>
+        <button type="button" onClick={() => router.push("/pages/quiz")}>
           Click Me
         </button>
       </div>
