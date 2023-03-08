@@ -6,7 +6,7 @@ export default function Newspaper() {
     <>
       <div className="newspaper">
         <h1>Newspaper</h1>
-        <img src="../Pictures/newspaper1.png" />
+        <img src="../Pictures/newspaper1.png" alt="newspaper" />
         <button type="button" onClick={() => router.push("/pages/suspects")}>
           Click Me
         </button>
