@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/carriehancock/.nvm/versions/node/v16.18.0/bin/node /Users/carriehancock/.nvm/versions/node/v16.18.0/bin/yarn start
+  /Users/carriehancock/.nvm/versions/node/v16.18.0/bin/node /Users/carriehancock/.nvm/versions/node/v16.18.0/bin/yarn
 
 PATH: 
   /Users/carriehancock/.nvm/versions/node/v16.18.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/mysql/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/carriehancock/fspt13-team-4/package.json: Unexpected token / in JSON at position 133
+  SyntaxError: /Users/carriehancock/fspt13-team-4/package.json: Unexpected token } in JSON at position 374
       at JSON.parse (<anonymous>)
       at /Users/carriehancock/.nvm/versions/node/v16.18.0/lib/node_modules/yarn/lib/cli.js:1629:59
       at Generator.next (<anonymous>)
@@ -27,8 +27,8 @@ npm manifest:
     "version": "0.0.0",
     "private": true,
     "scripts": {
-      "start": "PORT=5050 nodemon ./bin/www",
-      // "migrate": "node ./model/database.js"
+      "start": "PORT=5050 nodemon ./bin/www"
+      
   
     },
     "dependencies": {
@@ -40,7 +40,7 @@ npm manifest:
       "morgan": "~1.9.1",
       "mysql": "^2.18.1",
       "nodemon": "^2.0.20",
-      "migrate": "node model/database.js"
+      
     }
   }
 
