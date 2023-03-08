@@ -9,7 +9,7 @@ const router = useRouter()
     
     <h1>Newspaper</h1>
 
-    <button type='button' onClick={() => router.push('/suspects')}>Click Me</button>
+    <button type='button' onClick={() => router.push('/pages/suspects')}>Click Me</button>
 
     </div>
     

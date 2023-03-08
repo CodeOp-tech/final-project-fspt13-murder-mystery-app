@@ -12,7 +12,7 @@ export default function Quiz() {
     
     <h1>Quiz</h1>
 
-    <button type="button" onClick={() => router.push('/reveal')}>Click Me</button>
+    <button type="button" onClick={() => router.push('/pages/reveal')}>Click Me</button>
 
     </div>
 

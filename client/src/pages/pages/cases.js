@@ -5,9 +5,10 @@ export default function Cases () {
     return (
     <>
     <div className="cases">
+        
     <h1>Case Choice</h1> 
 
-    <button type="button" onClick={() => router.push('/newspaper')}>Click Me</button>
+    <button type="button" onClick={() => router.push('/pages/newspaper')}>Click Me</button>
 
     </div>
 
