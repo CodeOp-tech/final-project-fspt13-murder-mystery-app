@@ -79,14 +79,13 @@ const handleAnswerButtonClick = (isCorrect) => {
         ))}
        </div>
 
-   
-    
-    
+
 
     
 
     </div>
     <button type="button" onClick={() => router.push('/pages/reveal')}>Click Me</button>
+
 
     </>
   );

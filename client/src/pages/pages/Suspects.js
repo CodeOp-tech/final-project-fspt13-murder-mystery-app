@@ -7,6 +7,7 @@ export default function Suspects() {
       <div className="suspects_container">
         <h1>Suspects</h1>
         <div className="suspects">
+          <img src="../Pictures/emmajohnson.jpg" alt="emmajohnson" />
           1. Emma Johnson - Robert's former assistant who was fired from her job
           after she was caught embezzling money from the company. She felt
           wronged by Robert and believed he deserved to die.
@@ -17,6 +18,7 @@ export default function Suspects() {
           Hobbies: Crafting, hiking, dancing Do you own a weapon? No
           <br></br>
           <br></br>
+          <img src="../Pictures/jackwilson.jpg" alt="jackwilson" />
           2. Jack Wilson - A rival businessman who was envious of Robert's
           success and saw him as a threat to his own business.<br></br>
           He believed that killing Robert would eliminate his competition.
@@ -27,6 +29,7 @@ export default function Suspects() {
           Do you own a weapon? Yes Hobbies: Sailing, Skiing, collecting stamps
           <br></br>
           <br></br>
+          <img src="../Pictures/karenthompson.jpg" alt="karenthompson" />
           3. Karen Thompson - Robert's wife who was unhappy in their marriage
           and wanted to collect his life insurance policy.<br></br>
           She saw his death as a way to get what she wanted.<br></br>
@@ -37,6 +40,7 @@ export default function Suspects() {
           Hobbies: reading, gardening, astrology<br></br>
           <br></br>
           <br></br>
+          <img src="../Pictures/tomdavies.jpg" alt="tomdavies" />
           4. Tom Davis - Robert's friend and business partner who was struggling
           financially and owed a lot of money to Robert.<br></br>
           He saw killing Robert as a way to solve his financial problems.
