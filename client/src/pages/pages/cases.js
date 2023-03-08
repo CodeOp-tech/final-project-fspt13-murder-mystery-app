@@ -4,13 +4,13 @@ export default function Cases() {
   const router = useRouter();
   return (
     <>
-      <div className="cases">
-        <h1>Case Choice</h1>
+    <div className="cases">
+    <h1>Case Choice</h1> 
 
-        <button type="button" onClick={() => router.push("/pages/newspaper")}>
-          Click Me
-        </button>
-      </div>
+    <button type="button" onClick={() => router.push('/pages/newspaper')}>Click Me</button>
+
+    </div>
+
     </>
   );
 }
