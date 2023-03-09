@@ -28,7 +28,7 @@ router.get("/:id", async function (req, res, next) {
     const results = await db(`
   SELECT * FROM questionsAnswers WHERE id = ${id};
   `);
-    let entries = results.data;
+    const entries = results.data;
     const entry = entries[0];
 
     if (!entry) {
@@ -41,3 +41,5 @@ router.get("/:id", async function (req, res, next) {
     res.status(500).send(error);
   }
 });
+
+module.exports = router;
