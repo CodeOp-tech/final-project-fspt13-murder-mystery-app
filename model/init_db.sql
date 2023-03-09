@@ -370,4 +370,5 @@ INSERT INTO questionsAnswers (category, question, answer1, answer2, answer3, cor
     "Call method can only pass arguments as an array while apply method can pass arguments individually"
  );
 
+  
 
