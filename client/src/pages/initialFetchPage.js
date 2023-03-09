@@ -1,22 +1,46 @@
-const gameFetch = () => {
-  const [characters, setEntries] = useState([]);
+const questionFetch = () => {
+  const [questions, setEntries] = useState([]);
 
   useEffect(() => {
     const fetchEntries = async () => {
-      const response = await fetch("http://localhost:5050/characters");
-      const mountains = await response.json();
+      const response = await fetch("http://localhost:5050/questionAnswers");
+      const questions = await response.json();
 
-      setEntries(mountains);
+      setEntries(questions);
     };
 
     fetchEntries();
   }, []);
 
-  const scotlandMountains = mountains.filter(
-    (mountain) => mountain.country === "Scotland"
+  const easyQuestions = questions.filter(
+    (question) => question.category === "Easy"
   );
 
-  const englandMountains = mountains.filter(
-    (mountain) => mountain.country === "England"
+  const intermediateQuestions = questions.filter(
+    (question) => question.category === "Intermediate"
   );
+
+  const advancedQuestions = questions.filter(
+    (question) => question.category === "Advanced"
+  );
+
+  const questionGroups = [{name: 'Easy', mountains: easyQuestions}, {name: 'Intermediate', mountains: intermediateQuestions}, {name: 'Advanced', mountains: advancedQuestions}]
+
+
+    return (
+      <main>
+      {questionGroups.map (group => {
+        <div>
+          <h2>{group.category} level</h2>
+        </div>
+        
+        
+      })}</main>
+
+
+
+
+
+    )
+
 };
