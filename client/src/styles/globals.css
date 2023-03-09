@@ -1,3 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+
+body {
+  background: black;
+  color: white;
+  font-family: "Special Elite", cursive;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/001/664/364/original/bloody-red-grunge-abstract-texture-background-free-vector.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 .suspects > img {
   max-width: 300px;
   max-height: 300px;
@@ -6,4 +20,53 @@
 .newspaper > img {
   max-width: 1200px;
   max-height: 1200px;
+}
+
+.cases > img {
+  max-width: 400px;
+  max-height: 400px;
+  cursor: pointer;
+}
+
+.title-section {
+  background-color: black;
+  padding: 20px;
+  margin: -10px;
+  border: 0;
+}
+
+.hero-title {
+  color: white;
+  font-family: "Special Elite", cursive;
+  font-size: 72px;
+  text-align: center;
+  letter-spacing: 0.2rem;
+}
+
+.hero-section {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.case-intro {
+  color: white;
+  font-family: "Special Elite", cursive;
+}
+
+.img-newspaper {
+  display: block;
+  margin-bottom: 20px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.tips {
+  display: block;
+  background: black;
+  color: white;
+  margin-top: 20px;
+  text-decoration: underline;
 }
