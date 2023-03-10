@@ -20,7 +20,7 @@ router.get("/questionsAnswers", async function (req, res, next) {
 
 //GET one entry
 
-router.get("/:id", async function (req, res, next) {
+router.get("/questionsAnswers/:id", async function (req, res, next) {
   const params = req.params;
   const id = params.id;
 
