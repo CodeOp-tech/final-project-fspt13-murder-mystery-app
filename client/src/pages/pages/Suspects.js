@@ -7,6 +7,7 @@ export default function Suspects() {
       <div className="suspects_container">
         <h1>Suspects</h1>
         <div className="suspects">
+          <h1 className="test">test</h1>
           <img src="../Pictures/emmajohnson.jpg" alt="emmajohnson" />
           1. Emma Johnson - Robert's former assistant who was fired from her job
           after she was caught embezzling money from the company. She felt
@@ -52,6 +53,11 @@ export default function Suspects() {
           Hobbies: listen to classical music, bet on horses, woodturning
           <br></br>
         </div>
+        <button className="tips">Unlock tip number 1</button>
+        <button className="tips">Unlock tip number 2</button>
+        <button className="tips">Unlock tip number 3</button>
+        <button className="tips">Unlock tip number 4</button>
+        <button className="tips">Unlock tip number 5</button>
 
         <button type="button" onClick={() => router.push("/pages/quiz")}>
           Click Me
