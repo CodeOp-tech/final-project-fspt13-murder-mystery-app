@@ -84,7 +84,7 @@ const handleAnswerButtonClick = (isCorrect) => {
     
 
     </div>
-    <button type="button" onClick={() => router.push('/pages/reveal')}>Click Me</button>
+    <button type="button" onClick={() => router.push('/reveal')}>Click Me</button>
 
 
     </>

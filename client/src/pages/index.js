@@ -17,10 +17,10 @@ export default function Home() {
             you solve a thrilling murder case.<br></br>
           </p>
         </section>
-        <button type="button" onClick={() => router.push("/pages/cases")}>
+        <button type="button" onClick={() => router.push("/cases")}>
           Click Me
         </button>
-
+      </div>
      </>
     )
     }

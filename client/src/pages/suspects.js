@@ -59,7 +59,7 @@ export default function Suspects() {
         <button className="tips">Unlock tip number 4</button>
         <button className="tips">Unlock tip number 5</button>
 
-        <button type="button" onClick={() => router.push("/pages/quiz")}>
+        <button type="button" onClick={() => router.push("/quiz")}>
           Click Me
         </button>
       </div>
