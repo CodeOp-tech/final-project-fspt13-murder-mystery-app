@@ -20,7 +20,7 @@ export default function Home() {
         <button type="button" onClick={() => router.push("/pages/cases")}>
           Click Me
         </button>
-
-     </>
-    )
-    }
+      </div>
+    </>
+  );
+}
