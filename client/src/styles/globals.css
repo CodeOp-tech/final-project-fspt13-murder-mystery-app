@@ -126,6 +126,10 @@ button {
   align-content: flex-start;
   background-color: white;
   border-radius: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .suspect2 {
   display: flex;
@@ -136,6 +140,10 @@ button {
   align-content: flex-start;
   background-color: white;
   border-radius: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .suspect3 {
   display: flex;
@@ -146,6 +154,10 @@ button {
   align-content: flex-start;
   background-color: white;
   border-radius: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .suspect4 {
   display: flex;
@@ -156,6 +168,10 @@ button {
   align-content: flex-start;
   background-color: white;
   border-radius: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .suspect-intro {
