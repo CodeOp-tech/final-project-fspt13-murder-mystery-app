@@ -1,7 +1,21 @@
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 export default function Suspects() {
   const router = useRouter();
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      const response = await fetch("http://localhost:5050/questionsAnswers");
+      const questions = await response.json();
+
+      setQuestions(questions);
+    };
+
+    fetchQuestions();
+  }, []);
+
   return (
     <div className="suspects_container">
       <h1 className="suspects-title">Suspects</h1>
@@ -93,7 +107,25 @@ export default function Suspects() {
         <button className="tips">Unlock tip number 3</button>
         <button className="tips">Unlock tip number 4</button>
         <button className="tips">Unlock tip number 5</button>
+        <br></br>
       </div>
+      {/*<button className="tips">Unlock tip number 1</button>
+        <button className="tips">Unlock tip number 2</button>
+        <button className="tips">Unlock tip number 3</button>
+        <button className="tips">Unlock tip number 4</button>
+  <button className="tips">Unlock tip number 5</button>
+
+        {correctAnswers === 5 && <div>First tip</div>}
+        {correctAnswers === 10 && <div>Second tip</div>}
+        {correctAnswers === 15 && <div>Third tip</div>}
+  
+  */}
+
+      <ul>
+        {questions.map((question) => (
+          <li key={question.id}>{question.question}</li>
+        ))}
+      </ul>
 
       <button type="button" onClick={() => router.push("/pages/quiz")}>
         Click Me

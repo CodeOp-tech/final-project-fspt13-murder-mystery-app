@@ -9,7 +9,7 @@ export default function Cases() {
         <img
           src="../Pictures/victim1.jpg"
           alt="emmajohnson"
-          onClick={() => router.push("/pages/newspaper")}
+          onClick={() => router.push("/newspaper")}
         />
         <p className="case-intro">
           Robert Thompson was a wealthy businessman in Oakville who owned a
@@ -21,7 +21,7 @@ export default function Cases() {
           The police began investigating the murder and identified four
           suspects, each with a possible motive for the murder. <br></br>
         </p>
-        <button type="button" onClick={() => router.push("/pages/newspaper")}>
+        <button type="button" onClick={() => router.push("/newspaper")}>
           Click Me
         </button>
       </div>

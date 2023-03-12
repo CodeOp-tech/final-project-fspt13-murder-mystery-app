@@ -1,6 +1,34 @@
 import { useRouter } from "next/router";
 import { React, useState, useEffect } from 'react';
 
+// useEffect(() => {
+//   const fetchEntries = async () => {
+//     const response = await fetch("http://localhost:5050/questionsAnswers");
+//     const questions = await response.json();
+
+//     setEntries(questions);
+//   };
+
+//   fetchEntries();
+// }, []);
+
+// const easyQuestions = questions.filter(
+//   (question) => question.category === "Easy"
+// );
+
+// const intermediateQuestions = questions.filter(
+//   (question) => question.category === "Intermediate"
+// );
+
+// const advancedQuestions = questions.filter(
+//   (question) => question.category === "Advanced"
+// );
+
+// const questionGroups = [{name: 'Easy', questions: easyQuestions}, {name: 'Intermediate', questions: intermediateQuestions}, {name: 'Advanced', questions: advancedQuestions}]
+
+
+
+
 export default function Quiz() {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -51,6 +79,8 @@ const tips = ["The killer is right-handed", "There was a personal grudge", "Ther
 const handleAnswerButtonClick = (isCorrect) => {
   if(isCorrect === true) {
     alert("Tip is ...")
+  } else {
+    alert("Incorrect, try again")
   }
   const nextQuestion = currentQuestion + 1;
 
@@ -84,7 +114,7 @@ const handleAnswerButtonClick = (isCorrect) => {
     
 
     </div>
-    <button type="button" onClick={() => router.push('/pages/reveal')}>Click Me</button>
+    <button type="button" onClick={() => router.push('/reveal')}>Click Me</button>
 
 
     </>
