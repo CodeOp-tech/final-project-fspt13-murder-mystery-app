@@ -10,10 +10,6 @@ body {
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }
 
 .quiz {
@@ -58,9 +54,10 @@ button {
   cursor: pointer;
 }
 
-.suspects > img {
+.suspect-pic {
   max-width: 300px;
   max-height: 300px;
+  border-radius: 16px;
 }
 
 .newspaper > img {
@@ -75,7 +72,6 @@ button {
 }
 
 .title-section {
-  background-color: black;
   padding: 20px;
   margin: -10px;
   border: 0;
@@ -86,7 +82,8 @@ button {
   font-family: "Special Elite", cursive;
   font-size: 72px;
   text-align: center;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.5rem;
+  text-shadow: 2px 2px 8px #000000;
 }
 
 .hero-section {
@@ -102,7 +99,10 @@ button {
 
 .img-newspaper {
   display: block;
-  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 button {
@@ -115,4 +115,87 @@ button {
   color: white;
   margin-top: 20px;
   text-decoration: underline;
+}
+
+.suspect1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  background-color: white;
+  border-radius: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.suspect2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  background-color: white;
+  border-radius: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.suspect3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  background-color: white;
+  border-radius: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.suspect4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  background-color: white;
+  border-radius: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.suspect-intro {
+  padding: 0%;
+  color: black;
+}
+
+.suspects-title {
+  text-align: center;
+  font-size: 50px;
+}
+
+.second-section {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  padding: 80px;
+}
+
+.coding-img {
+  max-width: 500px;
+  max-height: 500px;
 }

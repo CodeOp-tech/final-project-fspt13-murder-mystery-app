@@ -5,7 +5,6 @@ export default function Newspaper() {
   return (
     <>
       <div className="newspaper">
-        <h1>Newspaper</h1>
         <img
           src="../Pictures/newspaper1.png"
           alt="newspaper"

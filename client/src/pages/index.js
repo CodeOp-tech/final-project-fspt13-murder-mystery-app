@@ -17,10 +17,34 @@ export default function Home() {
             you solve a thrilling murder case.<br></br>
           </p>
         </section>
-        <button type="button" onClick={() => router.push("/cases")}>
-          Click Me
-        </button>
+        <div className="second-section">
+          <img
+            src="https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/JavaScript-code.jpg?itok=1Wia7hH0"
+            alt="coding"
+            className="coding-img"
+          />
+          <p>
+            With engaging storylines and mind-bending puzzles, this app is the
+            perfect way to exercise your brain and have fun at the same time.
+            <br></br>
+            Whether you're a seasoned programmer or a beginner, our puzzles are
+            designed to be challenging but solvable with a little bit of thought
+            and effort.<br></br>
+          </p>
+        </div>
+        <div>
+          <p>
+            So what are you waiting for? Put on your thinking cap and dive into
+            the world of mystery and intrigue. <br></br>
+            With our murder mystery app, you're the hero of the story – and it's
+            up to you to catch the killer before they strike again.<br></br>
+            <button type="button" onClick={() => router.push("/pages/cases")}>
+              {" "}
+              Start Now!
+            </button>
+          </p>
+        </div>
       </div>
-     </>
-    )
-    }
+    </>
+  );
+}
