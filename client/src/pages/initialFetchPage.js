@@ -26,7 +26,7 @@ const questionFetch = () => {
     (question) => question.category === "Advanced"
   );
 
-  const questionGroups = [{name: 'Easy', mountains: easyQuestions}, {name: 'Intermediate', mountains: intermediateQuestions}, {name: 'Advanced', mountains: advancedQuestions}]
+  const questionGroups = [{name: 'Easy', questions: easyQuestions}, {name: 'Intermediate', questions: intermediateQuestions}, {name: 'Advanced', questions: advancedQuestions}]
 
 
     return (
