@@ -1,9 +1,11 @@
+import {useEffect, useState} from 'react'
+
 const questionFetch = () => {
   const [questions, setEntries] = useState([]);
 
   useEffect(() => {
     const fetchEntries = async () => {
-      const response = await fetch("http://localhost:5050/questionAnswers");
+      const response = await fetch("http://localhost:5050/questionsAnswers");
       const questions = await response.json();
 
       setEntries(questions);
@@ -44,3 +46,5 @@ const questionFetch = () => {
     )
 
 };
+
+export default questionFetch;
