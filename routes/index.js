@@ -8,8 +8,10 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/questionsAnswers", async function (req, res, next) {
+  const category = req.query.category
+
   try {
-    const response = await db("SELECT * from questionsAnswers;");
+    const response = await db(`SELECT * from questionsAnswers ${category ? `WHERE category = '${category}'` : ''};`);
     let entries = response.data;
 
     res.send(entries);

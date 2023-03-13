@@ -1,30 +1,52 @@
 import { useRouter } from "next/router";
-import { React, useState, useEffect } from 'react';
+import { React, useState, useEffect } from "react";
 
-// useEffect(() => {
-//   const fetchEntries = async () => {
-//     const response = await fetch("http://localhost:5050/questionsAnswers");
-//     const questions = await response.json();
 
-//     setEntries(questions);
-//   };
+const BASE_URL = "http://localhost:5050"
 
-//   fetchEntries();
-// }, []);
 
-// const easyQuestions = questions.filter(
-//   (question) => question.category === "Easy"
-// );
+export default function Quiz() {
+  const router = useRouter();
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState('');
+  const [result, setResult] = useState({
+    score: 0,
+    correctAnswers: 0,
+    wrongAnswers: 0
+  })
 
-// const intermediateQuestions = questions.filter(
-//   (question) => question.category === "Intermediate"
-// );
+  useEffect(() => {
+    const fetchEntries = async () => {
+      const response = await fetch(`${BASE_URL}/questionsAnswers`);
+      const questions = await response.json();
+ 
+      fetchEntries(questions);
+    };
+ 
+    fetchEntries();
+  }, []);
+ 
+  //const easyQuestions = questions.filter(
+  //  (question) => question.category === "Easy"
+  //);
+ 
+  const intermediateQuestions = questions.filter(
+    (question) => question.category === "Intermediate"
+  );
+ /*
+  const advancedQuestions = questions.filter(
+    (question) => question.category === "Advanced"
+  );
+ 
+  const questionGroups = [{name: 'Easy', questions: easyQuestions}, {name: 'Intermediate', questions: intermediateQuestions}, {name: 'Advanced', questions: advancedQuestions}]
+*/
 
-// const advancedQuestions = questions.filter(
-//   (question) => question.category === "Advanced"
-// );
 
-// const questionGroups = [{name: 'Easy', questions: easyQuestions}, {name: 'Intermediate', questions: intermediateQuestions}, {name: 'Advanced', questions: advancedQuestions}]
+const onClickNext = () => {
+  setCurrentQuestion((prev) => {
+    prev + 1;
+  })
+}
 
 
 
@@ -32,91 +54,116 @@ import { React, useState, useEffect } from 'react';
 export default function Quiz() {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [{status, questions}, setState] = useState({
+    status: "loading",
+    questions: []
+  });
 
-  const questions = [{
+  useEffect(() => {
+    const fetchQuestions = async () => {
+      setState(state => ({
+        ...state,
+        status: "loading"
+      }))
 
-    questionText: 'What is the capital of Italy?',
-    answerOptions: [
-      {answerText: 'Rome', isCorrect: true},
-      {answerText: 'Paris', isCorrect: false},
-      {answerText: 'London', isCorrect: false},
-      {answerText: 'Barcelona', isCorrect: false}
-    ]
-  },
+      try {
+        const response = await fetch("http://localhost:5050/questionsAnswers");
+        const data = await response.json();
 
-  {
-    questionText: 'What year is it?',
-    answerOptions: [
-      {answerText: '2020', isCorrect: false},
-      {answerText: '2022', isCorrect: false},
-      {answerText: '2023', isCorrect: true},
-      {answerText: '2024', isCorrect: false}
-    ]
-  },
-  {
-    questionText: 'Who currently owns Twitter',
-    answerOptions:[
-      {answerText: 'Jack Dorsey', isCorrect: false},
-      {answerText: 'Elon Musk', isCorrect: true},
-      {answerText: 'Mark Zuckerberg', isCorrect: false},
-      {answerText: 'Jeff Bezos', isCorrect: false}
-    ]
-  },
-  {
-    questionText: 'What is 5 + 5?',
-    answerOptions:[
-      {answerText: '2', isCorrect: false},
-      {answerText: '7', isCorrect: false},
-      {answerText: '10', isCorrect: true},
-      {answerText: '5', isCorrect: false}
-    ]
-  },
+        const questions = data.map(entity => ({
+          questionText: entity.question,
+          category: entity.category,
+          answerOptions: [entity.answer1, entity.answer2, entity.answer3].map(text => ({
+            answerText: text,
+            isCorrect: text === entity.correctAnswer
+          }))
+        }))
 
-]
+        setState(state => ({
+          ...state,
+          status: "success",
+          questions
+        }))
+      } catch(error) {
+        setState(state => ({
+          ...state,
+          status: "error"
+        }))
+      }
+    };
 
-const tips = ["The killer is right-handed", "There was a personal grudge", "There was a manicured nail found"]
+    fetchQuestions();
+  }, []);
 
-const handleAnswerButtonClick = (isCorrect) => {
-  if(isCorrect === true) {
-    alert("Tip is ...")
-  } else {
-    alert("Incorrect, try again")
-  }
-  const nextQuestion = currentQuestion + 1;
+  const tips = [
+    "The killer is right-handed",
+    "There was a personal grudge",
+    "There was a manicured nail found",
+  ];
 
-  if(nextQuestion < questions.length) {
-    setCurrentQuestion(nextQuestion);
-  } else {
-    alert('Time to solve the murder!')
-  }
-}
-  
+  const handleAnswerButtonClick = (isCorrect) => {
+    if (isCorrect === true) {
+      alert("Tip is ...");
+    } else {
+      alert("Incorrect, try again");
+    }
+    const nextQuestion = currentQuestion + 1;
+
+    if (nextQuestion < questions.length) {
+      setCurrentQuestion(nextQuestion);
+    } else {
+      alert("Time to solve the murder!");
+    }
+  };
+
+
   return (
     <>
-    
-     
-      
       <h1>Quiz</h1>
-      <div className="tip-section">Your tip is {tips.map((tip) => {
-       {tip}
-    })}</div>
-       <div className="quiz">
-       <div className="question-text">{questions[currentQuestion].questionText}</div>
 
-       <div className="answer-section">
-        {questions[currentQuestion].answerOptions.map((answerOption) => (
-          <button onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
-        ))}
-       </div>
+      {status === "loading" && <div>Loading</div>}
+      {status === "success" && (
+        <>
+          <div className="tip-section">
+            Your tip is{" "}
+            {tips.map((tip) => {
+              {
+                tip;
+              }
+            })}
+          </div>
+          <div className="quiz">
+            <div className="question-text">
+              {questions[currentQuestion].questionText}
+            </div>
 
-
-
-    
-
-    </div>
-    <button type="button" onClick={() => router.push('/reveal')}>Click Me</button>
-
-
+            <div className="answer-section">
+              {questions[currentQuestion].answerOptions.map((answerOption) => (
+                <button
+                  onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}
+                >
+                  {answerOption.answerText}
+                </button>
+              ))}
+            </div>
+          </div>
+          <button
+            className="quiz-button"
+            type="button"
+            onClick={() => router.push("/reveal")}
+          >
+            Click Me
+          </button>
+        </>
+      )}
     </>
   );
 }
+
+/*
+<div className="answer-section">
+{questions[currentQuestion].answerOptions.map((answerOption) => (
+  <button onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+))}
+</div>
+*/

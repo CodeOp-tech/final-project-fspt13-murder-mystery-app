@@ -3,22 +3,16 @@ import { useState, useEffect } from "react";
 
 export default function Suspects() {
   const router = useRouter();
-  const [questions, setQuestions] = useState([]);
-
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      const response = await fetch("http://localhost:5050/questionsAnswers");
-      const questions = await response.json();
-
-      setQuestions(questions);
-    };
-
-    fetchQuestions();
-  }, []);
+  const [isClicked, setIsClicked] = useState(false);
+  
+  function handleSuspect(isClicked) {
+    setIsClicked(true);
+  }
 
   return (
     <div className="suspects_container">
       <h1 className="suspects-title">Suspects</h1>
+
       <div className="suspects">
         <div className="suspect1">
           <img
@@ -26,6 +20,7 @@ export default function Suspects() {
             alt="emmajohnson"
             className="suspect-pic"
           />
+          <h2>Emma Johnson</h2>
           <p className="suspect-intro">
             1. Emma Johnson - Robert's former assistant who was fired from her
             job after she was caught embezzling money from the company.<br></br>
@@ -45,6 +40,7 @@ export default function Suspects() {
             alt="jackwilson"
             className="suspect-pic"
           />
+          <h2>Jack Wilson</h2>
           <p className="suspect-intro">
             2. Jack Wilson - A rival businessman who was envious of Robert's
             success and saw him as a threat to his own business.<br></br>
@@ -64,6 +60,7 @@ export default function Suspects() {
             alt="karenthompson"
             className="suspect-pic"
           />
+          <h2>Karen Thompson</h2>
           <p className="suspect-intro">
             3. Karen Thompson - Robert's wife who was unhappy in their marriage
             and wanted to collect his life insurance policy.<br></br>
@@ -77,58 +74,35 @@ export default function Suspects() {
         </div>
         <br></br>
         <br></br>
-      </div>
-      <div className="suspect4">
-        <img
-          src="../Pictures/tomdavies.jpg"
-          alt="tomdavies"
-          className="suspect-pic"
-        />
-        <p className="suspect-intro">
-          4. Tom Davis - Robert's friend and business partner who was struggling
-          financially and owed a lot of money to Robert.<br></br>
-          He saw killing Robert as a way to solve his financial problems.
-          <br></br>
-          Date of birth: 17/05/1965<br></br>
-          Dominant hand: right-handed<br></br>
-          Smoker? Yes<br></br>
-          Do you own a weapon? No<br></br>
-          Hobbies: listen to classical music, bet on horses, woodturning
-        </p>
+
+        <div className="suspect4">
+          <img
+            src="../Pictures/tomdavies.jpg"
+            alt="tomdavies"
+            className="suspect-pic"
+          />
+          <h2>Tom Davies</h2>
+          <p className="suspect-intro">
+            4. Tom Davis - Robert's friend and business partner who was
+            struggling financially and owed a lot of money to Robert.<br></br>
+            He saw killing Robert as a way to solve his financial problems.
+            <br></br>
+            Date of birth: 17/05/1965<br></br>
+            Dominant hand: right-handed<br></br>
+            Smoker? Yes<br></br>
+            Do you own a weapon? No<br></br>
+            Hobbies: listen to classical music, bet on horses, woodturning
+          </p>
+        </div>
       </div>
       <br></br>
-      <div>
-        <p>
-          Here is where the fun begins, unlock the tips to get to the murderer!
-        </p>
-        <br></br>
-        <button className="tips">Unlock tip number 1</button>
-        <button className="tips">Unlock tip number 2</button>
-        <button className="tips">Unlock tip number 3</button>
-        <button className="tips">Unlock tip number 4</button>
-        <button className="tips">Unlock tip number 5</button>
-        <br></br>
-      </div>
-      {/*<button className="tips">Unlock tip number 1</button>
-        <button className="tips">Unlock tip number 2</button>
-        <button className="tips">Unlock tip number 3</button>
-        <button className="tips">Unlock tip number 4</button>
-  <button className="tips">Unlock tip number 5</button>
 
-        {correctAnswers === 5 && <div>First tip</div>}
-        {correctAnswers === 10 && <div>Second tip</div>}
-        {correctAnswers === 15 && <div>Third tip</div>}
-  
-  */}
+      <button type="button" onClick={() => router.push("/newspaper")}>
+        Back
+      </button>
+      <button type="button" onClick={() => router.push("/quiz")}>
+        Next
 
-      <ul>
-        {questions.map((question) => (
-          <li key={question.id}>{question.question}</li>
-        ))}
-      </ul>
-
-      <button type="button" onClick={() => router.push("/pages/quiz")}>
-        Click Me
       </button>
     </div>
   );
