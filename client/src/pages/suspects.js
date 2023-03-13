@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 export default function Suspects() {
   const router = useRouter();
   const [questions, setQuestions] = useState([]);
+  const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -16,9 +17,14 @@ export default function Suspects() {
     fetchQuestions();
   }, []);
 
+  function handleSuspect(isClicked) {
+    setIsClicked(true);
+  }
+
   return (
     <div className="suspects_container">
       <h1 className="suspects-title">Suspects</h1>
+
       <div className="suspects">
         <div className="suspect1">
           <img
@@ -26,6 +32,7 @@ export default function Suspects() {
             alt="emmajohnson"
             className="suspect-pic"
           />
+          <h2>Emma Johnson</h2>
           <p className="suspect-intro">
             1. Emma Johnson - Robert's former assistant who was fired from her
             job after she was caught embezzling money from the company.<br></br>
@@ -45,6 +52,7 @@ export default function Suspects() {
             alt="jackwilson"
             className="suspect-pic"
           />
+          <h2>Jack Wilson</h2>
           <p className="suspect-intro">
             2. Jack Wilson - A rival businessman who was envious of Robert's
             success and saw him as a threat to his own business.<br></br>
@@ -64,6 +72,7 @@ export default function Suspects() {
             alt="karenthompson"
             className="suspect-pic"
           />
+          <h2>Karen Thompson</h2>
           <p className="suspect-intro">
             3. Karen Thompson - Robert's wife who was unhappy in their marriage
             and wanted to collect his life insurance policy.<br></br>
@@ -77,24 +86,26 @@ export default function Suspects() {
         </div>
         <br></br>
         <br></br>
-      </div>
-      <div className="suspect4">
-        <img
-          src="../Pictures/tomdavies.jpg"
-          alt="tomdavies"
-          className="suspect-pic"
-        />
-        <p className="suspect-intro">
-          4. Tom Davis - Robert's friend and business partner who was struggling
-          financially and owed a lot of money to Robert.<br></br>
-          He saw killing Robert as a way to solve his financial problems.
-          <br></br>
-          Date of birth: 17/05/1965<br></br>
-          Dominant hand: right-handed<br></br>
-          Smoker? Yes<br></br>
-          Do you own a weapon? No<br></br>
-          Hobbies: listen to classical music, bet on horses, woodturning
-        </p>
+
+        <div className="suspect4">
+          <img
+            src="../Pictures/tomdavies.jpg"
+            alt="tomdavies"
+            className="suspect-pic"
+          />
+          <h2>Tom Davies</h2>
+          <p className="suspect-intro">
+            4. Tom Davis - Robert's friend and business partner who was
+            struggling financially and owed a lot of money to Robert.<br></br>
+            He saw killing Robert as a way to solve his financial problems.
+            <br></br>
+            Date of birth: 17/05/1965<br></br>
+            Dominant hand: right-handed<br></br>
+            Smoker? Yes<br></br>
+            Do you own a weapon? No<br></br>
+            Hobbies: listen to classical music, bet on horses, woodturning
+          </p>
+        </div>
       </div>
       <br></br>
       <div>
@@ -126,9 +137,11 @@ export default function Suspects() {
           <li key={question.id}>{question.question}</li>
         ))}
       </ul>
-
-      <button type="button" onClick={() => router.push("/pages/quiz")}>
-        Click Me
+      <button type="button" onClick={() => router.push("/newspaper")}>
+        Back
+      </button>
+      <button type="button" onClick={() => router.push("/quiz")}>
+        Next
       </button>
     </div>
   );

@@ -55,9 +55,8 @@ body {
 }
 
 .suspect-pic {
-  max-width: 300px;
-  max-height: 300px;
-  border-radius: 16px;
+  width: 100%;
+  height: auto;
 }
 
 .newspaper > img {
@@ -103,6 +102,71 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  margin: -263px 0 0 -358px;
+  opacity: 0;
+
+  /* Configure the animation for Firefox */
+  animation-duration: 6s;
+  animation-name: spin;
+  animation-timing-function: linear;
+
+  /* Configure it for Chrome and Safari */
+  animation-duration: 6s;
+  animation-name: spin;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  0% {
+    opacity: 0.2;
+    -moz-transform: scale(0.2) rotate(0deg);
+  }
+
+  15% {
+    opacity: 1;
+    margin: -263px 0 0 -358px;
+    -moz-transform: scale(1) rotate(1090deg);
+  }
+
+  90% {
+    opacity: 1;
+    top: 50%;
+    -moz-transform: scale(1) rotate(1090deg);
+  }
+
+  100% {
+    top: 500%;
+    opacity: 1;
+    -moz-transform: scale(1) rotate(1090deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    opacity: 0.2;
+    -webkit-transform: scale(0.2) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    margin: -263px 0 0 -358px;
+    -webkit-transform: scale(1) rotate(1090deg);
+  }
+  90% {
+    opacity: 1;
+    top: 50%;
+    -webkit-transform: scale(1) rotate(1090deg);
+  }
+
+  100% {
+    top: 500%;
+    opacity: 1;
+    -webkit-transform: scale(1) rotate(1090deg);
+  }
 }
 
 button {
@@ -118,65 +182,48 @@ button {
 }
 
 .suspect1 {
+  height: fit-content;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: flex-start;
-  background-color: white;
-  border-radius: 16px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  flex-direction: column;
+  padding: 1rem 1rem 2rem;
+  background: #f8f3e8;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 .suspect2 {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: flex-start;
-  background-color: white;
-  border-radius: 16px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 2rem;
+  background: #f8f3e8;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 .suspect3 {
+  height: fit-content;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: flex-start;
-  background-color: white;
-  border-radius: 16px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  flex-direction: column;
+  padding: 1rem 1rem 2rem;
+  background: #f8f3e8;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 .suspect4 {
+  height: fit-content;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  align-content: flex-start;
-  background-color: white;
-  border-radius: 16px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  flex-direction: column;
+  padding: 1rem 1rem 2rem;
+  background: #f8f3e8;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 
 .suspect-intro {
   padding: 0%;
   color: black;
+  font-size: 1rem;
+  text-align: center;
 }
 
 .suspects-title {
@@ -237,4 +284,43 @@ button {
 }
 .cases > h5 {
   color: black;
+}
+
+.suspects {
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 10px;
+  padding: 5rem;
+}
+
+.suspect1 > h2 {
+  margin-top: 1rem;
+  font-weight: normal;
+  font-size: 2rem;
+  color: black;
+  text-align: center;
+}
+.suspect2 > h2 {
+  margin-top: 1rem;
+  font-weight: normal;
+  font-size: 2rem;
+  color: black;
+  text-align: center;
+}
+
+.suspect3 > h2 {
+  margin-top: 1rem;
+  font-weight: normal;
+  font-size: 2rem;
+  color: black;
+  text-align: center;
+}
+
+.suspect4 > h2 {
+  margin-top: 1rem;
+  font-weight: normal;
+  font-size: 2rem;
+  color: black;
+  text-align: center;
 }

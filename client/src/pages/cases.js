@@ -19,10 +19,14 @@ export default function Cases() {
           The police began investigating the murder and identified four
           suspects, each with a possible motive for the murder. <br></br>
         </p>
+
         <button type="button" onClick={() => router.push("/newspaper")}>
           Work this case
         </button>
       </div>
+      <button type="button" onClick={() => router.push("/")}>
+        Back
+      </button>
     </>
   );
 }
