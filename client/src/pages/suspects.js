@@ -3,20 +3,8 @@ import { useState, useEffect } from "react";
 
 export default function Suspects() {
   const router = useRouter();
-  const [questions, setQuestions] = useState([]);
   const [isClicked, setIsClicked] = useState(false);
-
-  useEffect(() => {
-    const fetchQuestions = async () => {
-      const response = await fetch("http://localhost:5050/questionsAnswers");
-      const questions = await response.json();
-
-      setQuestions(questions);
-    };
-
-    fetchQuestions();
-  }, []);
-
+  
   function handleSuspect(isClicked) {
     setIsClicked(true);
   }
@@ -108,35 +96,6 @@ export default function Suspects() {
         </div>
       </div>
       <br></br>
-      <div>
-        <p>
-          Here is where the fun begins, unlock the tips to get to the murderer!
-        </p>
-        <br></br>
-        <button className="tips">Unlock tip number 1</button>
-        <button className="tips">Unlock tip number 2</button>
-        <button className="tips">Unlock tip number 3</button>
-        <button className="tips">Unlock tip number 4</button>
-        <button className="tips">Unlock tip number 5</button>
-        <br></br>
-      </div>
-      {/*<button className="tips">Unlock tip number 1</button>
-        <button className="tips">Unlock tip number 2</button>
-        <button className="tips">Unlock tip number 3</button>
-        <button className="tips">Unlock tip number 4</button>
-  <button className="tips">Unlock tip number 5</button>
-
-        {correctAnswers === 5 && <div>First tip</div>}
-        {correctAnswers === 10 && <div>Second tip</div>}
-        {correctAnswers === 15 && <div>Third tip</div>}
-  
-  */}
-
-      <ul>
-        {questions.map((question) => (
-          <li key={question.id}>{question.question}</li>
-        ))}
-      </ul>
       <button type="button" onClick={() => router.push("/newspaper")}>
         Back
       </button>
