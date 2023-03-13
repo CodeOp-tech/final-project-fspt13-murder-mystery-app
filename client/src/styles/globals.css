@@ -40,7 +40,7 @@ body {
   justify-content: space-between;
 }
 
-button {
+.quiz-button {
   width: 100%;
   font-size: 16px;
   color: #ffffff;
@@ -194,8 +194,47 @@ button {
   align-content: flex-start;
   padding: 80px;
 }
+.second-section > p {
+  font-size: 26px;
+  margin-top: -360px;
+  margin-left: 700px;
+}
 
 .coding-img {
   max-width: 500px;
   max-height: 500px;
+  border-radius: 5px;
+}
+.last-section > p {
+  font-size: 26px;
+}
+
+.cases {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  background-color: white;
+  border-radius: 16px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.cases > p {
+  color: black;
+}
+
+.cases > img {
+  max-width: 250px;
+  max-height: 250px;
+}
+.cases > h4 {
+  color: black;
+}
+.cases > h5 {
+  color: black;
 }
