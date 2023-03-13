@@ -19,7 +19,7 @@ export default function Home() {
         </section>
         <div className="second-section">
           <img
-            src="https://www.itprotoday.com/sites/itprotoday.com/files/styles/article_featured_retina/public/JavaScript-code.jpg?itok=1Wia7hH0"
+            src="https://thumbs.gfycat.com/LimpingCarefreeGlassfrog-size_restricted.gif"
             alt="coding"
             className="coding-img"
           />
@@ -32,13 +32,13 @@ export default function Home() {
             and effort.<br></br>
           </p>
         </div>
-        <div>
+        <div className="last-section">
           <p>
             So what are you waiting for? Put on your thinking cap and dive into
             the world of mystery and intrigue. <br></br>
             With our murder mystery app, you're the hero of the story – and it's
             up to you to catch the killer before they strike again.<br></br>
-            <button type="button" onClick={() => router.push("/pages/cases")}>
+            <button type="button" onClick={() => router.push("/cases")}>
               {" "}
               Start Now!
             </button>

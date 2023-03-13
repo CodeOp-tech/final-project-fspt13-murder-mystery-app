@@ -4,13 +4,11 @@ export default function Cases() {
   const router = useRouter();
   return (
     <>
+      <h1>Case Choice</h1>
       <div className="cases">
-        <h1>Case Choice</h1>
-        <img
-          src="../Pictures/victim1.jpg"
-          alt="emmajohnson"
-          onClick={() => router.push("/newspaper")}
-        />
+        <img src="../Pictures/victim1.jpg" alt="robert" />
+        <h4>Robert Thompson</h4>
+        <h5>Javascript begginer</h5>
         <p className="case-intro">
           Robert Thompson was a wealthy businessman in Oakville who owned a
           successful real estate firm.<br></br>
@@ -21,10 +19,14 @@ export default function Cases() {
           The police began investigating the murder and identified four
           suspects, each with a possible motive for the murder. <br></br>
         </p>
+
         <button type="button" onClick={() => router.push("/newspaper")}>
-          Click Me
+          Work this case
         </button>
       </div>
+      <button type="button" onClick={() => router.push("/")}>
+        Back
+      </button>
     </>
   );
 }
