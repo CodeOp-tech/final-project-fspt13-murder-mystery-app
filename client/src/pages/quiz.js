@@ -1,30 +1,54 @@
 import { useRouter } from "next/router";
 import { React, useState, useEffect } from "react";
 
-// useEffect(() => {
-//   const fetchEntries = async () => {
-//     const response = await fetch("http://localhost:5050/questionsAnswers");
-//     const questions = await response.json();
 
-//     setEntries(questions);
-//   };
+const BASE_URL = "http://localhost:5050"
 
-//   fetchEntries();
-// }, []);
 
-// const easyQuestions = questions.filter(
-//   (question) => question.category === "Easy"
-// );
+export default function Quiz() {
+  const router = useRouter();
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState('');
+  const [result, setResult] = useState({
+    score: 0,
+    correctAnswers: 0,
+    wrongAnswers: 0
+  })
 
-// const intermediateQuestions = questions.filter(
-//   (question) => question.category === "Intermediate"
-// );
+  useEffect(() => {
+    const fetchEntries = async () => {
+      const response = await fetch(`${BASE_URL}/questionsAnswers`);
+      const questions = await response.json();
+ 
+      fetchEntries(questions);
+    };
+ 
+    fetchEntries();
+  }, []);
+ 
+  //const easyQuestions = questions.filter(
+  //  (question) => question.category === "Easy"
+  //);
+ 
+  const intermediateQuestions = questions.filter(
+    (question) => question.category === "Intermediate"
+  );
+ /*
+  const advancedQuestions = questions.filter(
+    (question) => question.category === "Advanced"
+  );
+ 
+  const questionGroups = [{name: 'Easy', questions: easyQuestions}, {name: 'Intermediate', questions: intermediateQuestions}, {name: 'Advanced', questions: advancedQuestions}]
+*/
 
-// const advancedQuestions = questions.filter(
-//   (question) => question.category === "Advanced"
-// );
 
-// const questionGroups = [{name: 'Easy', questions: easyQuestions}, {name: 'Intermediate', questions: intermediateQuestions}, {name: 'Advanced', questions: advancedQuestions}]
+const onClickNext = () => {
+  setCurrentQuestion((prev) => {
+    prev + 1;
+  })
+}
+
+
 
 
 export default function Quiz() {
@@ -92,9 +116,11 @@ export default function Quiz() {
     }
   };
 
+
   return (
     <>
       <h1>Quiz</h1>
+
       {status === "loading" && <div>Loading</div>}
       {status === "success" && (
         <>
@@ -133,3 +159,11 @@ export default function Quiz() {
     </>
   );
 }
+
+/*
+<div className="answer-section">
+{questions[currentQuestion].answerOptions.map((answerOption) => (
+  <button onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+))}
+</div>
+*/
