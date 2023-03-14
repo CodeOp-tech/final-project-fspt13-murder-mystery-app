@@ -20,7 +20,11 @@ export default function Cases() {
           suspects, each with a possible motive for the murder. <br></br>
         </p>
 
-        <button type="button" onClick={() => router.push("/newspaper")}>
+        <button
+          type="button"
+          className="work-case"
+          onClick={() => router.push("/newspaper")}
+        >
           Work this case
         </button>
       </div>
