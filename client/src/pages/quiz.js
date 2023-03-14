@@ -1,53 +1,18 @@
 import { useRouter } from "next/router";
 import { React, useState, useEffect } from "react";
-
-// const BASE_URL = "http://localhost:5050"
-
-// export default function Quiz() {
-//   const router = useRouter();
-//   const [currentQuestion, setCurrentQuestion] = useState(0);
-//   const [selectedAnswer, setSelectedAnswer] = useState('');
-//   const [result, setResult] = useState({
-//     score: 0,
-//     correctAnswers: 0,
-//     wrongAnswers: 0
-//   })
-
-//   useEffect(() => {
-//     const fetchEntries = async () => {
-//       const response = await fetch(`${BASE_URL}/questionsAnswers`);
-//       const questions = await response.json();
-
-//       fetchEntries(questions);
-//     };
-
-//     fetchEntries();
-//   }, []);
-
-//   //const easyQuestions = questions.filter(
-//   //  (question) => question.category === "Easy"
-//   //);
-
-//   const intermediateQuestions = questions.filter(
-//     (question) => question.category === "Intermediate"
-//   );
-//  /*
-//   const advancedQuestions = questions.filter(
-//     (question) => question.category === "Advanced"
-//   );
-
-//   const questionGroups = [{name: 'Easy', questions: easyQuestions}, {name: 'Intermediate', questions: intermediateQuestions}, {name: 'Advanced', questions: advancedQuestions}]
-// */
-
-// const onClickNext = () => {
-//   setCurrentQuestion((prev) => {
-//     prev + 1;
-//   })
-// }
+import Suspects from "./suspects";
 
 export default function Quiz() {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  function handleClick() {
+    setIsPlaying(false);
+    router.push("/suspects");
+    window.location.reload();
+  }
+
   const [{ status, questions }, setState] = useState({
     status: "loading",
     questions: [],
@@ -99,7 +64,9 @@ export default function Quiz() {
 
   const handleAnswerButtonClick = (isCorrect) => {
     if (isCorrect === true) {
-      setCounter(counter + 1);
+      alert("Tip is ...");
+    } else {
+      alert("Incorrect, try again");
     }
     const nextQuestion = currentQuestion + 1;
 
@@ -149,16 +116,11 @@ export default function Quiz() {
           >
             Click Me
           </button>
+          <button className="play" onClick={() => handleClick(false)}>
+            Close
+          </button>{" "}
         </>
       )}
     </>
   );
 }
-
-/*
-<div className="answer-section">
-{questions[currentQuestion].answerOptions.map((answerOption) => (
-  <button onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
-))}
-</div>
-*/
