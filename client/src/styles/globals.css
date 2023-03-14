@@ -171,6 +171,13 @@ body {
 
 button {
   cursor: pointer;
+  background-color: #000000;
+  font-family: "Special Elite", cursive;
+  font-size: 20px;
+  color: white;
+  border-radius: 16px;
+  border: none;
+  padding: 10px;
 }
 
 .tips {
@@ -273,6 +280,9 @@ button {
   padding-right: 30px;
   padding-top: 20px;
   padding-bottom: 20px;
+  background: #f8f3e8;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
 }
 
 .cases > p {
@@ -282,6 +292,7 @@ button {
 .cases > img {
   max-width: 250px;
   max-height: 250px;
+  border-radius: 3px;
 }
 .cases > h4 {
   color: black;
@@ -289,7 +300,9 @@ button {
 .cases > h5 {
   color: black;
 }
-
+.work-case {
+  margin-top: 10px;
+}
 .suspects {
   display: grid;
   grid-template-rows: 1;
@@ -327,4 +340,9 @@ button {
   font-size: 2rem;
   color: black;
   text-align: center;
+}
+
+.img-reveal {
+  max-width: 250px;
+  max-height: 250px;
 }

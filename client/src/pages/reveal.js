@@ -2,16 +2,19 @@ import { useState } from "react";
 
 export default function Reveal() {
   const [isKiller, setIsKiller] = useState(false);
-  const [suspects, setSuspects] = useState({});
+  const [selectedValue, setSelectedValue] = useState("");
+
+  function handleRadioChange(event) {
+    setSelectedValue(event.target.value);
+  }
 
   function revealKiller(e) {
     e.preventDefault();
-    const value = e.target.value;
-    if (value === "Tom Davies") {
+    if (selectedValue === "Tom Davies") {
       setIsKiller(true);
-      alert("That's right");
     } else {
-      alert("try again");
+      alert("That's not right, please try again.");
+      window.location.reload();
     }
   }
 
@@ -24,35 +27,46 @@ export default function Reveal() {
           <input
             type="radio"
             value="Emma Johnson"
-            name="gender"
-            onClick={(e) => e.target.value}
+            name="suspect"
+            onChange={handleRadioChange}
           />{" "}
           Emma Johnson
           <input
             type="radio"
             value="Jack Wilson"
-            name="gender"
-            onClick={(e) => e.target.value}
+            name="suspect"
+            onChange={handleRadioChange}
           />{" "}
           Jack Wilson
           <input
             type="radio"
             value="Karen Thompson"
-            name="gender"
-            onClick={(e) => e.target.value}
+            name="suspect"
+            onChange={handleRadioChange}
           />{" "}
           Karen Thompson
           <input
             type="radio"
             value="Tom Davies"
-            name="gender"
-            onClick={(e) => e.target.value}
+            name="suspect"
+            onChange={handleRadioChange}
           />{" "}
           Tom Davies
           <button type="submit">Submit</button>
         </form>
 
-        <div>{isKiller && <>Right</>}</div>
+        <div>
+          {isKiller && (
+            <div>
+              Congratulations! You caught the murderer!
+              <img
+                src="../Pictures/tomdavies.jpg"
+                className="img-reveal"
+                alt="tomdavies"
+              />
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
