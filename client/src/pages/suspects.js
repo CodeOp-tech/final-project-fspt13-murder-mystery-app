@@ -96,11 +96,13 @@ export default function Suspects() {
         </div>
       </div>
       <br></br>
+
       <button type="button" onClick={() => router.push("/newspaper")}>
         Back
       </button>
       <button type="button" onClick={() => router.push("/quiz")}>
         Next
+
       </button>
     </div>
   );
