@@ -1,94 +1,90 @@
 import { useRouter } from "next/router";
 import { React, useState, useEffect } from "react";
 
+// const BASE_URL = "http://localhost:5050"
 
-const BASE_URL = "http://localhost:5050"
+// export default function Quiz() {
+//   const router = useRouter();
+//   const [currentQuestion, setCurrentQuestion] = useState(0);
+//   const [selectedAnswer, setSelectedAnswer] = useState('');
+//   const [result, setResult] = useState({
+//     score: 0,
+//     correctAnswers: 0,
+//     wrongAnswers: 0
+//   })
 
+//   useEffect(() => {
+//     const fetchEntries = async () => {
+//       const response = await fetch(`${BASE_URL}/questionsAnswers`);
+//       const questions = await response.json();
 
-export default function Quiz() {
-  const router = useRouter();
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState('');
-  const [result, setResult] = useState({
-    score: 0,
-    correctAnswers: 0,
-    wrongAnswers: 0
-  })
+//       fetchEntries(questions);
+//     };
 
-  useEffect(() => {
-    const fetchEntries = async () => {
-      const response = await fetch(`${BASE_URL}/questionsAnswers`);
-      const questions = await response.json();
- 
-      fetchEntries(questions);
-    };
- 
-    fetchEntries();
-  }, []);
- 
-  //const easyQuestions = questions.filter(
-  //  (question) => question.category === "Easy"
-  //);
- 
-  const intermediateQuestions = questions.filter(
-    (question) => question.category === "Intermediate"
-  );
- /*
-  const advancedQuestions = questions.filter(
-    (question) => question.category === "Advanced"
-  );
- 
-  const questionGroups = [{name: 'Easy', questions: easyQuestions}, {name: 'Intermediate', questions: intermediateQuestions}, {name: 'Advanced', questions: advancedQuestions}]
-*/
+//     fetchEntries();
+//   }, []);
 
+//   //const easyQuestions = questions.filter(
+//   //  (question) => question.category === "Easy"
+//   //);
 
-const onClickNext = () => {
-  setCurrentQuestion((prev) => {
-    prev + 1;
-  })
-}
+//   const intermediateQuestions = questions.filter(
+//     (question) => question.category === "Intermediate"
+//   );
+//  /*
+//   const advancedQuestions = questions.filter(
+//     (question) => question.category === "Advanced"
+//   );
 
+//   const questionGroups = [{name: 'Easy', questions: easyQuestions}, {name: 'Intermediate', questions: intermediateQuestions}, {name: 'Advanced', questions: advancedQuestions}]
+// */
 
-
+// const onClickNext = () => {
+//   setCurrentQuestion((prev) => {
+//     prev + 1;
+//   })
+// }
 
 export default function Quiz() {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [{status, questions}, setState] = useState({
+  const [{ status, questions }, setState] = useState({
     status: "loading",
-    questions: []
+    questions: [],
   });
 
   useEffect(() => {
     const fetchQuestions = async () => {
-      setState(state => ({
+      setState((state) => ({
         ...state,
-        status: "loading"
-      }))
+        status: "loading",
+      }));
 
       try {
         const response = await fetch("http://localhost:5050/questionsAnswers");
         const data = await response.json();
 
-        const questions = data.map(entity => ({
+        const questions = data.map((entity) => ({
           questionText: entity.question,
           category: entity.category,
-          answerOptions: [entity.answer1, entity.answer2, entity.answer3].map(text => ({
-            answerText: text,
-            isCorrect: text === entity.correctAnswer
-          }))
-        }))
+          answerOptions: [entity.answer1, entity.answer2, entity.answer3].map(
+            (text) => ({
+              answerText: text,
+              isCorrect: text === entity.correctAnswer,
+            })
+          ),
+        }));
 
-        setState(state => ({
+        setState((state) => ({
           ...state,
           status: "success",
-          questions
-        }))
-      } catch(error) {
-        setState(state => ({
+          questions,
+        }));
+      } catch (error) {
+        setState((state) => ({
           ...state,
-          status: "error"
-        }))
+          status: "error",
+        }));
       }
     };
 
@@ -103,9 +99,7 @@ export default function Quiz() {
 
   const handleAnswerButtonClick = (isCorrect) => {
     if (isCorrect === true) {
-      alert("Tip is ...");
-    } else {
-      alert("Incorrect, try again");
+      setCounter(counter + 1);
     }
     const nextQuestion = currentQuestion + 1;
 
@@ -115,7 +109,6 @@ export default function Quiz() {
       alert("Time to solve the murder!");
     }
   };
-
 
   return (
     <>
@@ -140,7 +133,9 @@ export default function Quiz() {
             <div className="answer-section">
               {questions[currentQuestion].answerOptions.map((answerOption) => (
                 <button
-                  onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}
+                  onClick={() =>
+                    handleAnswerButtonClick(answerOption.isCorrect)
+                  }
                 >
                   {answerOption.answerText}
                 </button>
