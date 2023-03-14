@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 export default function Suspects() {
   const router = useRouter();
   const [isClicked, setIsClicked] = useState(false);
-  
+
   function handleSuspect(isClicked) {
     setIsClicked(true);
   }
@@ -102,7 +102,6 @@ export default function Suspects() {
       </button>
       <button type="button" onClick={() => router.push("/quiz")}>
         Next
-
       </button>
     </div>
   );
