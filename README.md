@@ -12,5 +12,9 @@ In this app you will be able to:
 
 [![HXewrxI.md.jpg](https://iili.io/HXewrxI.md.jpg)](https://freeimage.host/i/HXewrxI)
 
+## API Routes
+
+[![HXeOEZB.md.jpg](https://iili.io/HXeOEZB.md.jpg)](https://freeimage.host/i/HXeOEZB)
+
  _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
  
