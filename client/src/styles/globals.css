@@ -20,10 +20,8 @@ body {
   margin: 0px;
   margin-left: 200px;
   margin-right: 200px;
-  box-shadow: 10px 10px 116px 51px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 116px 51px rgba(0, 0, 0, 0.75);
   border-radius: 1000px;
-
-  
 }
 
 .quiz-container {
@@ -55,7 +53,6 @@ body {
   font-size: 16px;
   font-weight: 500;
   color: #424142;
-  
 }
 
 .h2 {
@@ -63,7 +60,7 @@ body {
   font-weight: 500;
   margin: 0;
   margin-top: 8px;
-  color: #2d264b
+  color: #2d264b;
 }
 
 .quiz-container ul {
@@ -476,4 +473,8 @@ button {
 }
 .susp-list {
   color: black;
+}
+
+.play {
+  display: block;
 }

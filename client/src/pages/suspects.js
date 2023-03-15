@@ -6,6 +6,7 @@ export default function Suspects() {
   const router = useRouter();
 
   const [isPlaying, setIsPlaying] = useState(false);
+  const [tips, setTips] = useState("");
 
   function handleClick(isPlaying) {
     setIsPlaying(isPlaying);
@@ -78,7 +79,6 @@ export default function Suspects() {
               collect his life insurance policy.
               <br></br>
               She saw his death as a way to get what she wanted.<br></br>
-              Date of birth: 21/02/1964<br></br>
             </p>
             <ul className="susp-list">
               <li>Date of birth: 21/02/1964</li>
