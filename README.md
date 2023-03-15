@@ -16,5 +16,9 @@ In this app you will be able to:
 
 [![HXeOEZB.md.jpg](https://iili.io/HXeOEZB.md.jpg)](https://freeimage.host/i/HXeOEZB)
 
+## Database Schema
+
+[![HX4kET7.md.jpg](https://iili.io/HX4kET7.md.jpg)](https://freeimage.host/i/HX4kET7)
+
  _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
  
