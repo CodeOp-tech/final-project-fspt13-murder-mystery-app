@@ -10,6 +10,7 @@ export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
+  const [showResult, setShowResult] = useState(false);
   const [result, setResult] = useState({
     score: 0,
     correctAnswers: 0,
@@ -60,7 +61,6 @@ export default function Quiz() {
 
   const onClickNext = () => {
     setSelectedAnswerIndex(null)
-    setCurrentQuestion((prev) => prev + 1)
     setResult((prev) =>
     selectedAnswer
     ? {
@@ -70,6 +70,12 @@ export default function Quiz() {
       }
     : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
 ) 
+if (currentQuestion !== questions.length -1) {
+  setCurrentQuestion ((prev) => prev +1)
+} else {
+  setCurrentQuestion(0)
+  setShowResult(true)
+}
 }
 
 
@@ -84,6 +90,7 @@ const onAnswerSelected = (isCorrect, index) => {
 }};
  
 const addZero = (number) => (number > 9 ? number : `0${number}`)
+
   return (
    <>
     <h1>Quiz</h1>
@@ -92,8 +99,9 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
       {status === "success" && (
         <>
           <div className="quiz-container">
-            {/* {!showResult ? ( */}
+            {!showResult ? (
             <div>
+              <div>
               <span className="active-question-no">
                 {addZero(currentQuestion + 1)}
               </span>
@@ -127,106 +135,30 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
           >
             Click Me
           </button>
-
+            </div>
+          </div> 
+          ) : (
+            <div className="result">
+              <h3>Result</h3>
+              <p>
+                Total Question: <span>{questions.length}</span>
+              </p>
+              <p>
+                Total Score:<span> {result.score/questions.length*100}</span>%
+              </p>
+              <p>
+                Correct Answers:<span> {result.correctAnswers}</span>
+              </p>
+              <p>
+                Wrong Answers:<span> {result.wrongAnswers}</span>
+              </p>
+            </div>
+          )
+         }
         </div>
-      </div>
-      </>
-      )}
-    </>
-  );
-}
-
-          
-            
- 
-    
-  
-;
-
-{/* <div className="answer-section">
-{questions[currentQuestion].answerOptions.map((answerOption) => (
-  <button onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
-))}
-</div> */}
-
-// const onAnswerSelected = (isCorrect) => {
-//     if (isCorrect === true) {
-//       alert("Your clue is ...");
-//     } else {
-//       alert("Incorrect, try again");
-//     }
-
-
-
- {/* <div className="tip-section">
-            Your tip is{" "}
-            {tips.map((tip) => {
-              {
-                tip;
-              }
-            })}
-          </div> */}
-/*
-<div className="answer-section">
-{questions[currentQuestion].answerOptions.map((answerOption) => (
-  <button onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
-))}
-</div>
-*/
- // const clues = [
-  //   "The killer is right-handed",
-  //   "There was a personal grudge",
-  //   "There was a manicured nail found",
-  // ];
-
-  // const handleAnswerButtonClick = (isCorrect) => {
-  //   if (isCorrect === true) {
-  //     alert("Your clue is ...");
-  //   } else {
-  //     alert("Incorrect, try again");
-  //   }
-  //   const nextQuestion = currentQuestion + 1;
-
-  //   if (nextQuestion < questions.length) {
-  //     setCurrentQuestion(nextQuestion);
-  //   } else {
-  //     alert("Time to solve the murder!");
-  //   }
-  // };
-
-{/* <button
-                  onClick={() => handleAnswerButtonClick(answerOption.isCorrect)}
-                >
-                  {answerOption.answerText}
-                </button> */}
-
-//   useEffect(() => {
-//     const fetchEntries = async () => {
-//       const response = await fetch(`${BASE_URL}/questionsAnswers`);
-//       const questions = await response.json();
- 
-//       fetchEntries(questions);
-//     };
- 
-//     fetchEntries();
-//   }, []);
- 
-  //const easyQuestions = questions.filter(
-  //  (question) => question.category === "Easy"
-  //);
- 
-  // const intermediateQuestions = questions.filter(
-  //   (question) => question.category === "Intermediate"
-  // );
- /*
-  const advancedQuestions = questions.filter(
-    (question) => question.category === "Advanced"
-  );
- 
-  const questionGroups = [{name: 'Easy', questions: easyQuestions}, {name: 'Intermediate', questions: intermediateQuestions}, {name: 'Advanced', questions: advancedQuestions}]
-   // function quizCounter(questions) {
-  //   this.score = 0;
-  //   this.questions = questions;
-  //   this.currentQuestionIndex = 0;
-  // }
-*/
+       </>
+      )
+    }
+  </>
+ );
+}      
