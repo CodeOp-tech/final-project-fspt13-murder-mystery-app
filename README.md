@@ -10,7 +10,7 @@ In this app you will be able to:
 
 ## Userflow
 
-[![HXewrxI.md.jpg](https://iili.io/HXewrxI.md.jpg)](https://freeimage.host/i/HXewrxI)
+[![HX46Fgn.md.jpg](https://iili.io/HX46Fgn.md.jpg)](https://freeimage.host/i/HX46Fgn)
 
 ## API Routes
 
@@ -19,6 +19,11 @@ In this app you will be able to:
 ## Database Schema
 
 [![HX4kET7.md.jpg](https://iili.io/HX4kET7.md.jpg)](https://freeimage.host/i/HX4kET7)
+
+## Full Stack Architecture Drawing
+
+[![HX465du.md.jpg](https://iili.io/HX465du.md.jpg)](https://freeimage.host/i/HX465du)
+
 
  _This is a student project that was created at [CodeOp](http://codeop.tech), a full stack development bootcamp in Barcelona._
  
