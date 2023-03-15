@@ -15,6 +15,7 @@ export default function Quiz() {
     score: 0,
     correctAnswers: 0,
     wrongAnswers: 0,
+    totalClues: 0,
   });
   const [{status, questions}, setState] = useState({
     status: "loading",
@@ -67,6 +68,7 @@ export default function Quiz() {
         ...prev,
         score: prev.score + 1,
         correctAnswers: prev.correctAnswers + 1,
+        totalClues: Math.floor(prev.correctAnswers / 2),
       }
     : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
 ) 
@@ -94,10 +96,13 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
   return (
    <>
     <h1>Quiz</h1>
+    <br/>
+    <h3>Work through the questions</h3>
 
       {status === "loading" && <div>Loading</div>}
       {status === "success" && (
         <>
+        <div className="body-quiz">
           <div className="quiz-container">
             {!showResult ? (
             <div>
@@ -110,11 +115,11 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
               </span>
             </div>
             
-              <h2>{questions[currentQuestion].questionText}</h2>
+              <h2 className="h2">{questions[currentQuestion].questionText}</h2>
               <ul>{questions[currentQuestion].answerOptions.map   ((answerOption, index) => (
                 <li onClick = {() => onAnswerSelected       (answerOption.isCorrect, index)}
                   key={answerOption}
-                  className={selectedAnswerIndex === index ? "selected-answer" : null
+                  className={selectedAnswerIndex === index ? 'selected-answer' : null
                 }>
                     {answerOption.answerText}
 
@@ -128,18 +133,11 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
                 {currentQuestion === questions.length - 1 ? 'Finish' : 'Next'}
                 
                 </button>
-                 <button
-            className="quiz-button"
-            type="button"
-            onClick={() => router.push("/reveal")}
-          >
-            Click Me
-          </button>
             </div>
           </div> 
           ) : (
             <div className="result">
-              <h3>Result</h3>
+              <h3>Results</h3>
               <p>
                 Total Question: <span>{questions.length}</span>
               </p>
@@ -152,9 +150,18 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
               <p>
                 Wrong Answers:<span> {result.wrongAnswers}</span>
               </p>
+              <p>Clues Unlocked:<span> {result.totalClues}</span></p>
+              <button
+            className="quiz-button"
+            type="button"
+            onClick={() => router.push("/reveal")}
+          >
+            Give me my clues and let me solve this case!
+          </button>
             </div>
           )
          }
+         </div>
         </div>
        </>
       )
