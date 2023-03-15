@@ -1,20 +1,7 @@
-import { useRouter } from "next/router";
 import { React, useState, useEffect } from "react";
-import Tip1 from "./components/tip1";
-import Suspects from "./suspects";
 
 export default function Quiz({ closePopUp }) {
-  const router = useRouter();
-  const [clues, setClues] = useState([
-    `Witnesses reported seeing a person wearing a dark hoodie and jeans leaving 
-  the office building around the time of the murder. The person was speaking on the phone. 
-  The police believe that this person may have been involved in the crime.`,
-    `The police found a cigarette butt in the crime scene 
-  suggesting that the murderer might be a smoker`,
-  ]);
-  const [displayClue, setDisplayClue] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("");
-  const [difficultyLevel, setDifficultyLevel] = useState ("");
+  const [selectedValue, setSelectedValue] = useState("easy");
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
@@ -29,7 +16,13 @@ export default function Quiz({ closePopUp }) {
     status: "loading",
     questions: [],
   });
-
+  const clues = [
+    `Witnesses reported seeing a person wearing a dark hoodie and jeans leaving 
+  the office building around the time of the murder. The person was speaking on the phone. 
+  The police believe that this person may have been involved in the crime.`,
+    `The police found a cigarette butt in the crime scene 
+  suggesting that the murderer might be a smoker`,
+  ]
 
 
   useEffect(() => {
@@ -121,43 +114,17 @@ export default function Quiz({ closePopUp }) {
       setDisplayClue(true);
     }
   }
-function handleRadioChange(event) {
-  setSelectedValue(event.target.value);
-   console.log(selectedValue)
-}
-  // function handleClue() {
-    
-  //   console.log(difficultyLevel)
-  //   if (selectedValue === "easy") {
-  //     setDifficultyLevel("easy");
-  //     if (difficultyLevel = "easy") {
-  //       (result.correctAnswers = 10 && result.wrongAnswers <= 20); {
-  //       clues.map((clue) => clue) ;
-  //     }}
-  //    } else if (selectedValue === "intermediate") {
-  //     setDifficultyLevel("intermediate");
-  //     if (difficultyLevel = "easy") {
-  //       (result.correctAnswers = 15 && result.wrongAnswers <= 15); {
-  //         clues.map((clue) => clue);
-  //       }}
-        
-  //     } else if (selectedValue === "advanced") {
-  //       setDifficultyLevel("advanced");
-  //       if (difficultyLevel = "advanced") {
-  //         (result.correctAnswers = 20 && result.wrongAnswers <= 10); {
-  //           clues.map((clue) => clue)
-  //         }} 
-  //       } 
-  //   }
-  
-  //   const revealClue = () => {
-  //     if (result.correctAnswers = 5)
-  //     setDisplayClue(true)
+  function handleRadioChange(event) {
+    setSelectedValue(event.target.value);
+  }
 
-  //   }
-  // function handleRadioChange(event) {
-  //   setSelectedValue(event.target.value);
-  // }
+  const levels = {
+    easy: 10,
+    intermediate: 15,
+    hard: 20
+  }
+  const isHintListVisible = result.correctAnswers >= levels[selectedValue]
+  const isFinished = result.correctAnswers + result.wrongAnswers === questions.length
 
   return (
     <>
@@ -165,16 +132,8 @@ function handleRadioChange(event) {
       {status === "success" && (
         <>
           <div className="body-quiz">
-            <div>
-              {" "}
-              <ul>
-                {clues.map((clue, index) => (
-                  <li key={index}>{clue}</li>
-                ))}
-              </ul>
-            </div>
             <div className="quiz-container">
-              {!showResult ? (
+              {!isFinished ? (
                 <div>
                   <div>
                     <form onSubmit={handleSubmit}>
@@ -182,6 +141,7 @@ function handleRadioChange(event) {
                         type="radio"
                         value="easy"
                         name="selection"
+                        checked={selectedValue === 'easy'}
                         onChange={handleRadioChange}
                       />{" "}
                       Easy
@@ -189,6 +149,7 @@ function handleRadioChange(event) {
                         type="radio"
                         value="intermediate"
                         name="selection"
+                        checked={selectedValue === 'intermediate'}
                         onChange={handleRadioChange}
                       />{" "}
                       Intermediate
@@ -196,6 +157,7 @@ function handleRadioChange(event) {
                         type="radio"
                         value="advanced"
                         name="selection"
+                        checked={selectedValue === 'advanced'}
                         onChange={handleRadioChange}
                       />{" "}
                       Advanced
@@ -275,6 +237,13 @@ function handleRadioChange(event) {
                   <p>
                     Clues Unlocked:<span> {result.totalClues}</span>
                   </p>
+                  {isHintListVisible && (
+                    <ul>
+                      {clues.map((clue, index) => (
+                        <li key={index}>{clue}</li>
+                      ))}
+                    </ul>
+                  )}
                   <button
                     className="quiz-button"
                     type="button"
@@ -282,13 +251,6 @@ function handleRadioChange(event) {
                   >
                     Give me my clues and let me solve this case!
                   </button>
-                  {displayClue && (
-                    <ul>
-                      {clues.map((clue, index) => (
-                        <li key={index}>{clue}</li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
               )}
             </div>
