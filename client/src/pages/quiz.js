@@ -2,16 +2,9 @@ import { useRouter } from "next/router";
 import { React, useState, useEffect } from "react";
 import Suspects from "./suspects";
 
-export default function Quiz() {
+export default function Quiz({ closePopUp }) {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  function handleClick() {
-    setIsPlaying(false);
-    router.push("/suspects");
-    window.location.reload();
-  }
 
   const [{ status, questions }, setState] = useState({
     status: "loading",
@@ -79,8 +72,6 @@ export default function Quiz() {
 
   return (
     <>
-      <h1>Quiz</h1>
-
       {status === "loading" && <div>Loading</div>}
       {status === "success" && (
         <>
@@ -107,6 +98,9 @@ export default function Quiz() {
                   {answerOption.answerText}
                 </button>
               ))}
+              <button className="play" onClick={closePopUp}>
+                X
+              </button>{" "}
             </div>
           </div>
           <button
@@ -116,9 +110,6 @@ export default function Quiz() {
           >
             Click Me
           </button>
-          <button className="play" onClick={() => handleClick(false)}>
-            Close
-          </button>{" "}
         </>
       )}
     </>

@@ -21,6 +21,14 @@ body {
   box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: space-evenly;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .question-section {
@@ -30,7 +38,8 @@ body {
 
 .question-text {
   margin-bottom: 12px;
-  font-family: "Verdana", cursive, sans-serif;
+  font-family: "Special Elite", cursive;
+  color: black;
 }
 
 .answer-section {
@@ -44,13 +53,13 @@ body {
   width: 100%;
   font-size: 16px;
   color: #ffffff;
-  background-color: #670404;
+  background-color: black;
   border-radius: 15px;
   display: flex;
   padding: 5px;
   justify-content: flex-start;
   align-items: center;
-  border: 5px solid #000000;
+  border: none;
   cursor: pointer;
 }
 
