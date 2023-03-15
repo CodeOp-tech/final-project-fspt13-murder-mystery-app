@@ -10,9 +10,9 @@ const DB_NAME = process.env.DB_NAME;
 const con = mysql.createConnection({
   host: DB_HOST || "127.0.0.1",
   user: DB_USER || "root",
-  password: DB_PASS || "CodeOp2022",
+  password: DB_PASS || "CODE_QUIZ",
   database: DB_NAME || "Code_Quiz",
-  multipleStatements: true
+  multipleStatements: true,
 });
 
 let sql = fs.readFileSync(__dirname + "/init_db.sql").toString();
