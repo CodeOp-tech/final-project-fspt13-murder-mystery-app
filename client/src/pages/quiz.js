@@ -113,7 +113,7 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
             
               <h2 className="h2">{questions[currentQuestion].questionText}</h2>
               <ul>{questions[currentQuestion].answerOptions.map   ((answerOption, index) => (
-                <li onClick = {() => onAnswerSelected       (answerOption.isCorrect, index)}
+                <li onClick = {() => onAnswerSelected (answerOption.isCorrect, index)}
                   key={answerOption}
                   className={selectedAnswerIndex === index ? 'selected-answer' : null
                 }>
@@ -129,14 +129,14 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
                 {currentQuestion === questions.length - 1 ? 'Finish' : 'Next'}
                 
                 </button>
-
-              ))}
-              <button className="play" onClick={closePopUp}>
+                
+                <button className="play" onClick={closePopUp}>
                 X
-              </button>{" "}
-
+                </button>{" "}
+              
             </div>
           </div> 
+          
           ) : (
             <div className="result">
               <h3>Results</h3>
@@ -162,7 +162,7 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
           </button>
            </div>
           )
-         }
+      }
          </div>
         </div>
        </>
@@ -171,4 +171,3 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
   </>
  );
 }      
-
