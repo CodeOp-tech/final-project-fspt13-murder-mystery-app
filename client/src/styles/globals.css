@@ -11,26 +11,135 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
+.body-quiz {
+  font-family: "Special Elite", cursive;
+  background: linear-gradient(90.04deg, #e1210485 0.03%, #360b12b3 99.96%);
+  color: #11052c;
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  margin-left: 200px;
+  margin-right: 200px;
+  box-shadow: 10px 10px 116px 51px rgba(0, 0, 0, 0.75);
+  border-radius: 1000px;
+}
 
-.quiz {
-  width: 450px;
-  min-height: 200px;
-  height: min-content;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+.quiz-container {
   display: flex;
   justify-content: space-evenly;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-width: 450px;
+  min-width: 150px;
+  background: #ffffffe5;
+  border-radius: 4px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 30px 60px;
 }
 
-.question-section {
+.quiz-container .active-question-no {
+  font-size: 32px;
+  font-weight: 500;
+  color: #bd0707;
+}
+
+.quiz-container .total-question {
+  font-size: 16px;
+  font-weight: 500;
+  color: #424142;
+}
+
+.h2 {
+  font-size: 23px;
+  font-weight: 500;
+  margin: 0;
+  margin-top: 8px;
+  color: #2d264b;
+}
+
+.quiz-container ul {
+  margin-top: 20px;
+  margin-left: -40px;
+}
+
+.quiz-container ul li {
+  text-decoration: none;
+  list-style: none;
+  color: #2d264b;
+  font-size: 16px;
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  padding: 11px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.quiz-container ul .selected-answer {
+  background: #e6aab1b0;
+  border: 1px solid #7b2005;
+}
+
+.quiz-container button {
+  background: linear-gradient(90.04deg, #241414e5 0.03%, #b00101fc 99.96%);
+  border-radius: 9px;
+  font-size: 18px;
+  color: #ffffff;
+  padding: 10px 42px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  font-family: "Special Elite", cursive;
+}
+
+.quiz-container button:disabled {
+  background: #e7e8e9;
+  color: #9fa3a9;
+  cursor: not-allowed;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+  color: #11052c;
+}
+
+.result h3 {
+  font-size: 26px;
+  letter-spacing: 1.4px;
+  text-align: center;
+  color: #11052c;
+  font-weight: bold;
+}
+
+.result p {
+  font-size: 17px;
+  font-weight: 500;
+  color: #11052c;
+}
+
+.result p span {
+  color: #700c0c;
+  font-size: 22px;
+  color: #11052c;
+}
+
+/* .question-section {
   width: 100%;
   position: relative;
-}
+} */
 
-.question-text {
+/* .question-text {
   margin-bottom: 12px;
-  font-family: "Verdana", cursive, sans-serif;
+  font-family: "Special Elite", cursive;
+  color: black;
 }
 
 .answer-section {
@@ -44,25 +153,26 @@ body {
   width: 100%;
   font-size: 16px;
   color: #ffffff;
-  background-color: #670404;
+  background-color: black;
   border-radius: 15px;
   display: flex;
   padding: 5px;
   justify-content: flex-start;
   align-items: center;
-  border: 5px solid #000000;
+  border: none;
   cursor: pointer;
-}
+} */
 
 .suspect-pic {
   width: 100%;
   height: auto;
 }
 
-.newspaper > img {
+/* .newspaper > img {
   max-width: 1200px;
   max-height: 1200px;
-}
+  overflow: ;
+} */
 
 .cases > img {
   max-width: 400px;
@@ -92,17 +202,17 @@ body {
 }
 
 .case-intro {
-  color: white;
+  color: black;
   font-family: "Special Elite", cursive;
 }
 
 .img-newspaper {
   display: block;
-  display: block;
+
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  position: fixed;
+  position: absolute;
 
   top: 50%;
   left: 50%;
@@ -111,12 +221,12 @@ body {
   opacity: 0;
 
   /* Configure the animation for Firefox */
-  animation-duration: 6s;
+  animation-duration: 15s;
   animation-name: spin;
   animation-timing-function: linear;
 
   /* Configure it for Chrome and Safari */
-  animation-duration: 6s;
+  animation-duration: 15s;
   animation-name: spin;
   animation-timing-function: linear;
 }
@@ -136,13 +246,13 @@ body {
   90% {
     opacity: 1;
     top: 50%;
-    -moz-transform: scale(1) rotate(1090deg);
+    -moz-transform: scale(1) rotate(1060deg);
   }
 
   100% {
     top: 500%;
     opacity: 1;
-    -moz-transform: scale(1) rotate(1090deg);
+    -moz-transform: scale(1) rotate(0deg);
   }
 }
 
@@ -159,13 +269,13 @@ body {
   90% {
     opacity: 1;
     top: 50%;
-    -webkit-transform: scale(1) rotate(1090deg);
+    -webkit-transform: scale(1) rotate(1060deg);
   }
 
   100% {
     top: 500%;
     opacity: 1;
-    -webkit-transform: scale(1) rotate(1090deg);
+    -webkit-transform: scale(1) rotate(0deg);
   }
 }
 
@@ -196,6 +306,7 @@ button {
   background: #f8f3e8;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+  margin-left: -10px;
 }
 .suspect2 {
   display: flex;
@@ -206,6 +317,7 @@ button {
   background: #f8f3e8;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+  margin-left: 10px;
 }
 .suspect3 {
   height: fit-content;
@@ -215,6 +327,7 @@ button {
   background: #f8f3e8;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+  margin-left: 10px;
 }
 .suspect4 {
   height: fit-content;
@@ -224,6 +337,7 @@ button {
   background: #f8f3e8;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+  margin-left: 10px;
 }
 
 .suspect-intro {
@@ -270,7 +384,7 @@ button {
 .cases {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
   align-content: flex-start;
@@ -283,6 +397,13 @@ button {
   background: #f8f3e8;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
+}
+.cases-button {
+  display: block;
+}
+.cases-content {
+  display: block;
+  color: #000000;
 }
 
 .cases > p {
@@ -304,11 +425,12 @@ button {
   margin-top: 10px;
 }
 .suspects {
-  display: grid;
-  grid-template-rows: 1;
+  display: flex;
+  /* grid-template-rows: 1;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 10px;
-  padding: 5rem;
+  gap: 3px; */
+  justify-content: space-between;
+  padding: 3rem;
 }
 
 .suspect1 > h2 {
@@ -345,4 +467,14 @@ button {
 .img-reveal {
   max-width: 250px;
   max-height: 250px;
+}
+.img-newspaper {
+  overflow: scroll;
+}
+.susp-list {
+  color: black;
+}
+
+.play {
+  display: block;
 }

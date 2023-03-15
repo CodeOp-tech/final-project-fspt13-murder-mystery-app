@@ -10,6 +10,9 @@ export default function Newspaper() {
           alt="newspaper"
           className="img-newspaper"
         />
+        <button type="button" onClick={() => router.push("/cases")}>
+          Back
+        </button>
         <button type="button" onClick={() => router.push("/suspects")}>
           Next
         </button>
