@@ -4,15 +4,27 @@ import Quiz from "./quiz";
 
 export default function Suspects() {
   const router = useRouter();
-
   const [isPlaying, setIsPlaying] = useState(false);
-  const [tips, setTips] = useState("");
+  const [isCluesListVisible, setIsCluesListVisible] = useState(false);
+
+  const clues = [
+    `Witnesses reported seeing a person wearing a dark hoodie and jeans leaving 
+  the office building around the time of the murder. The person was speaking on the phone. 
+  The police believe that this person may have been involved in the crime.`,
+    `The police found a cigarette butt in the crime scene 
+  suggesting that the murderer might be a smoker`,
+  ]
 
   function handleClick(isPlaying) {
     setIsPlaying(isPlaying);
   }
   function handleClosePopup() {
     setIsPlaying(false);
+  }
+
+  function handleFinish(isCluesListVisible) {
+    setIsPlaying(false)
+    setIsCluesListVisible(isCluesListVisible)
   }
 
   return (
@@ -119,7 +131,14 @@ export default function Suspects() {
         <button className="play" onClick={() => handleClick(true)}>
           Unlock the clues to get to the murderer!
         </button>{" "}
-        {isPlaying && <Quiz closePopUp={handleClosePopup} />}
+        {isCluesListVisible && (
+          <ul>
+            {clues.map((clue, index) => (
+              <li key={index}>{clue}</li>
+            ))}
+          </ul>
+        )}
+        {isPlaying && <Quiz closePopUp={handleClosePopup} onFinish={handleFinish} />}
         <button type="button" onClick={() => router.push("/newspaper")}>
           Back
         </button>

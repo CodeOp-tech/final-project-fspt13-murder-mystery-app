@@ -1,11 +1,10 @@
 import { React, useState, useEffect } from "react";
 
-export default function Quiz({ closePopUp }) {
+export default function Quiz({ closePopUp, onFinish }) {
   const [selectedValue, setSelectedValue] = useState("easy");
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
-  const [showResult, setShowResult] = useState(false);
   const [result, setResult] = useState({
     score: 0,
     correctAnswers: 0,
@@ -16,14 +15,6 @@ export default function Quiz({ closePopUp }) {
     status: "loading",
     questions: [],
   });
-  const clues = [
-    `Witnesses reported seeing a person wearing a dark hoodie and jeans leaving 
-  the office building around the time of the murder. The person was speaking on the phone. 
-  The police believe that this person may have been involved in the crime.`,
-    `The police found a cigarette butt in the crime scene 
-  suggesting that the murderer might be a smoker`,
-  ]
-
 
   useEffect(() => {
     const quizQuestions = async () => {
@@ -76,20 +67,18 @@ export default function Quiz({ closePopUp }) {
           }
         : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
     );
-    if (currentQuestion !== questions.length - 1) {
-      setCurrentQuestion((prev) => prev + 1);
-    } else {
-      setCurrentQuestion(0);
-      setShowResult(true);
-    }
+    setCurrentQuestion((prev) => prev + 1);
   };
 
-
-
   function handleClue() {
-    if (result.correctAnswers === 10) {
-      setDisplayClue(true);
+    const levels = {
+      easy: 10,
+      intermediate: 15,
+      hard: 20
     }
+    const isCluesListVisible = result.correctAnswers >= levels[selectedValue]
+
+    onFinish(isCluesListVisible)
   }
 
   const onAnswerSelected = (isCorrect, index) => {
@@ -109,21 +98,10 @@ export default function Quiz({ closePopUp }) {
     e.preventDefault();
   }
 
-  function handleClue() {
-    if (result.correctAnswers === 5) {
-      setDisplayClue(true);
-    }
-  }
   function handleRadioChange(event) {
     setSelectedValue(event.target.value);
   }
 
-  const levels = {
-    easy: 10,
-    intermediate: 15,
-    hard: 20
-  }
-  const isHintListVisible = result.correctAnswers >= levels[selectedValue]
   const isFinished = result.correctAnswers + result.wrongAnswers === questions.length
 
   return (
@@ -186,7 +164,7 @@ export default function Quiz({ closePopUp }) {
                           onClick={() =>
                             onAnswerSelected(answerOption.isCorrect, index)
                           }
-                          key={answerOption}
+                          key={index}
                           className={
                             selectedAnswerIndex === index
                               ? "selected-answer"
@@ -237,13 +215,6 @@ export default function Quiz({ closePopUp }) {
                   <p>
                     Clues Unlocked:<span> {result.totalClues}</span>
                   </p>
-                  {isHintListVisible && (
-                    <ul>
-                      {clues.map((clue, index) => (
-                        <li key={index}>{clue}</li>
-                      ))}
-                    </ul>
-                  )}
                   <button
                     className="quiz-button"
                     type="button"
