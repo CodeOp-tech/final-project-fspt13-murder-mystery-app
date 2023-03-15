@@ -14,6 +14,7 @@ export default function Quiz({ closePopUp }) {
   ]);
   const [displayClue, setDisplayClue] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
+  const [difficultyLevel, setDifficultyLevel] = useState ("");
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
@@ -28,6 +29,8 @@ export default function Quiz({ closePopUp }) {
     status: "loading",
     questions: [],
   });
+
+
 
   useEffect(() => {
     const quizQuestions = async () => {
@@ -88,6 +91,14 @@ export default function Quiz({ closePopUp }) {
     }
   };
 
+
+
+  function handleClue() {
+    if (result.correctAnswers === 10) {
+      setDisplayClue(true);
+    }
+  }
+
   const onAnswerSelected = (isCorrect, index) => {
     setSelectedAnswerIndex(index);
     if (isCorrect === true) {
@@ -106,31 +117,47 @@ export default function Quiz({ closePopUp }) {
   }
 
   function handleClue() {
-    if (result.correctAnswers === 10) {
+    if (result.correctAnswers === 5) {
       setDisplayClue(true);
     }
   }
-
+function handleRadioChange(event) {
+  setSelectedValue(event.target.value);
+   console.log(selectedValue)
+}
   // function handleClue() {
-
+    
+  //   console.log(difficultyLevel)
   //   if (selectedValue === "easy") {
-  //     setLevel("easy")
-  //     // if ((result.correctAnswers = 10 && result.wrongAnswers <= 20)) {
-  //     //   clues.map((clue) => clue);
-  //     }
-  //   } else if (selectedValue === "intermediate") {
-  //     // if ((result.correctAnswers = 15 && result.wrongAnswers <= 15)) {
-  //     //   clues.map((clue) => clue);
-  //     }
-  //   } else if (selectedValue === "intermediate") {
-  //     if ((result.correctAnswers = 20 && result.wrongAnswers <= 10)) {
-  //       clues.map((clue) => clue);
-  //     }
+  //     setDifficultyLevel("easy");
+  //     if (difficultyLevel = "easy") {
+  //       (result.correctAnswers = 10 && result.wrongAnswers <= 20); {
+  //       clues.map((clue) => clue) ;
+  //     }}
+  //    } else if (selectedValue === "intermediate") {
+  //     setDifficultyLevel("intermediate");
+  //     if (difficultyLevel = "easy") {
+  //       (result.correctAnswers = 15 && result.wrongAnswers <= 15); {
+  //         clues.map((clue) => clue);
+  //       }}
+        
+  //     } else if (selectedValue === "advanced") {
+  //       setDifficultyLevel("advanced");
+  //       if (difficultyLevel = "advanced") {
+  //         (result.correctAnswers = 20 && result.wrongAnswers <= 10); {
+  //           clues.map((clue) => clue)
+  //         }} 
+  //       } 
   //   }
+  
+  //   const revealClue = () => {
+  //     if (result.correctAnswers = 5)
+  //     setDisplayClue(true)
+
+  //   }
+  // function handleRadioChange(event) {
+  //   setSelectedValue(event.target.value);
   // }
-  function handleRadioChange(event) {
-    setSelectedValue(event.target.value);
-  }
 
   return (
     <>
@@ -172,13 +199,13 @@ export default function Quiz({ closePopUp }) {
                         onChange={handleRadioChange}
                       />{" "}
                       Advanced
-                      <button type="submit">Submit</button>
+                      {/* <button type="submit">Submit</button> */}
                     </form>
                   </div>
                   <div>
-                    <button className="play" onClick={closePopUp}>
+                    {/* <button className="play" onClick={closePopUp}>
                       X
-                    </button>{" "}
+                    </button>{" "} */}
                     <span className="active-question-no">
                       {addZero(currentQuestion + 1)}
                     </span>
@@ -224,6 +251,9 @@ export default function Quiz({ closePopUp }) {
                         ? "Finish"
                         : "Next"}
                     </button>
+                    <button className="play" onClick={closePopUp}>
+                      X
+                    </button>{" "}
                   </div>
                 </div>
               ) : (
