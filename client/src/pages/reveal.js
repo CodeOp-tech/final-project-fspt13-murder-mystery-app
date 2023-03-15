@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Suspects from "./suspects";
 
 export default function Reveal() {
   const [isKiller, setIsKiller] = useState(false);

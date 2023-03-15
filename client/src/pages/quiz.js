@@ -1,11 +1,9 @@
 import { useRouter } from "next/router";
 import { React, useState, useEffect } from "react";
+import Suspects from "./suspects";
 
 
-// const BASE_URL = "http://localhost:5050"
-
-
-export default function Quiz() {
+export default function Quiz({ closePopUp }) {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
@@ -94,11 +92,9 @@ const onAnswerSelected = (isCorrect, index) => {
 const addZero = (number) => (number > 9 ? number : `0${number}`)
 
   return (
-   <>
-    <h1>Quiz</h1>
-    <br/>
-    <h3>Work through the questions</h3>
 
+   <>
+   
       {status === "loading" && <div>Loading</div>}
       {status === "success" && (
         <>
@@ -133,6 +129,12 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
                 {currentQuestion === questions.length - 1 ? 'Finish' : 'Next'}
                 
                 </button>
+
+              ))}
+              <button className="play" onClick={closePopUp}>
+                X
+              </button>{" "}
+
             </div>
           </div> 
           ) : (
@@ -158,7 +160,7 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
           >
             Give me my clues and let me solve this case!
           </button>
-            </div>
+           </div>
           )
          }
          </div>
@@ -169,3 +171,4 @@ const addZero = (number) => (number > 9 ? number : `0${number}`)
   </>
  );
 }      
+
