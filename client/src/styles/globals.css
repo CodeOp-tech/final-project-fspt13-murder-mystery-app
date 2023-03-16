@@ -11,6 +11,8 @@ body {
   background-attachment: fixed;
   background-size: cover;
 }
+
+
 .body-quiz {
   font-family: "Special Elite", cursive;
   background: linear-gradient(90.04deg, #e1210485 0.03%, #360b12b3 99.96%);
@@ -36,7 +38,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   max-width: 450px;
   min-width: 150px;
-  background: #3c8046;
+  background: #8a8c8a;
   border-radius: 4px;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -47,6 +49,7 @@ body {
   font-size: 32px;
   font-weight: 500;
   color: #bd0707;
+  margin-top: 300px;
 }
 
 .quiz-container .total-question {
@@ -310,7 +313,8 @@ button {
 
 .suspects-title {
   text-align: center;
-  font-size: 50px;
+  font-size: 70px;
+  text-shadow: black 80px;
 }
 
 .second-section {
@@ -437,5 +441,90 @@ button {
 }
 
 .play {
+  cursor: pointer;
+  background-color: #313030;
+  font-family: "Special Elite", cursive;
+  font-size: 60px;
+  color: white;
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 1px 1px 20px 0 #000000;
+  text-shadow: 1px 1px 20px #000000;
+  border: solid #6c6c6d 5px;
+  text-decoration: none;
+  display: flex;
+  cursor: pointer;
+  text-align: center;
+  margin:0 auto;
+  
+}
+
+.play:hover{
+  cursor: pointer;
+  background-color: #8a3737bd;
+  font-family: "Special Elite", cursive;
+  font-size: 60px;
+  color: white;
+  border-radius: 16px;
+  padding: 15px;
+  box-shadow: 1px 1px 20px 0 #000000;
+  text-shadow: 1px 1px 20px #000000;
+  border: solid #6c6c6d 5px;
+  text-decoration: none;
   display: block;
+  cursor: pointer;
+  text-align: center;
+  margin:0 auto;
+}
+
+.guess-button {
+  display: flex;
+  text-align: center;
+  margin:0 auto;
+  margin-bottom: -40px;
+  border: solid #6c6c6d 2px;
+  margin-top: 5px;
+  background-color: #050404;
+  font-size: 25px;
+}
+
+.guess-button:hover {
+  display: flex;
+  text-align: center;
+  margin:0 auto;
+  margin-bottom: -35px;
+  border: solid #6c6c6d 2px;
+  margin-top: 5px;
+  background-color: #8a3737bd;
+}
+
+.back-button {
+  display: inherit;
+  text-align: center;
+  border: solid #6c6c6d 2px;
+  background-color: #050404;
+  font-size: 15px;
+  margin-left:32px
+}
+
+.back-button:hover {
+  display: inherit;
+  text-align: center;
+  border: solid #6c6c6d 2px;
+  background-color: #8a3737bd;
+}
+
+
+.quiz-container button.play2 {
+  background: linear-gradient(90.04deg, #241414e5 0.03%, #b00101fc 99.96%);
+  border-radius: 9px;
+  font-size: 13px;
+  color: #ffffff;
+  
+  outline: none;
+  border: none;
+  cursor: pointer;
+  
+  font-family: "Special Elite", cursive;
+  
 }

@@ -31,6 +31,12 @@ export default function Suspects() {
     <div>
       <div className="suspects_container">
         <h1 className="suspects-title">Suspects</h1>
+        <br/>
+        <p className="suspects-intro">
+          Here you can see the four suspects that the police believe are linked to the death of Robert.  
+
+        </p>
+
         <div className="suspects">
           <div className="suspect1">
             <img
@@ -42,15 +48,16 @@ export default function Suspects() {
             <p className="suspect-intro">
               Robert's former assistant who was fired from her job after she was
               caught embezzling money from the company.
-              <br></br>
+              <br/>
+              <br/>
               She felt wronged by Robert and believed he deserved to die.
               <br></br>
             </p>
             <ul className="susp-list">
               <li>Date of birth: 15/06/1983</li>
-              <li>Dominant hand: Right-handed</li>
-              <li>Smoker? No</li>
-              <li>Do you own a weapon? No</li>
+              <li>Dominant hand: Right</li>
+              <li>Smoker: No</li>
+              <li>Owns a weapon: No</li>
               <li>Hobbies: Crafting, hiking, dancing </li>
             </ul>
           </div>
@@ -65,15 +72,17 @@ export default function Suspects() {
             <h2>Jack Wilson</h2>
             <p className="suspect-intro">
               A rival businessman who was envious of Robert's success and saw
-              him as a threat to his own business.<br></br>
+              him as a threat to his own business.
+              <br/>
+              <br/>
               He believed that killing Robert would eliminate his competition.
               <br></br>
             </p>
             <ul className="susp-list">
               <li>Date of birth: 30/12/1978</li>
-              <li>Dominant hand: Right-handed</li>
-              <li>Smoker? Yes</li>
-              <li>Do you own a weapon? Yes</li>
+              <li>Dominant hand: Right</li>
+              <li>Smoker: Yes</li>
+              <li>Owns a weapon: Yes</li>
               <li>Hobbies: Sailing, Skiing, collecting stamps</li>
             </ul>
           </div>
@@ -87,16 +96,17 @@ export default function Suspects() {
             />
             <h2>Karen Thompson</h2>
             <p className="suspect-intro">
-              Robert's wife who was unhappy in their marriage and wanted to
+              Robert's wife who was unhappy in their marriage due to Robert's gambling addiction and wanted to
               collect his life insurance policy.
-              <br></br>
-              She saw his death as a way to get what she wanted.<br></br>
+              <br/>
+              <br/>
+              She saw his death as a way to clear the debt he'd built up in her name.<br></br>
             </p>
             <ul className="susp-list">
               <li>Date of birth: 21/02/1964</li>
-              <li>Dominant hand: Left handed</li>
-              <li>Smoker? Yes</li>
-              <li>Do you own a weapon? No</li>
+              <li>Dominant hand: Left</li>
+              <li>Smoker: Yes</li>
+              <li>Owns a weapon: No</li>
               <li>Hobbies: reading, gardening, astrology</li>
             </ul>
           </div>
@@ -113,15 +123,16 @@ export default function Suspects() {
             <p className="suspect-intro">
               Robert's friend and business partner who was struggling
               financially and owed a lot of money to Robert.
-              <br></br>
+              <br/>
+              <br/>
               He saw killing Robert as a way to solve his financial problems.
               <br></br>
             </p>
             <ul className="susp-list">
               <li>Date of birth: 17/05/1965</li>
-              <li>Dominant hand: right-handed</li>
-              <li>Smoker? Yes</li>
-              <li>Do you own a weapon? No</li>
+              <li>Dominant hand: right</li>
+              <li>Smoker: Yes</li>
+              <li>Owns a weapon: No</li>
               <li>
                 Hobbies: listen to classical music, bet on horses, woodturning
               </li>
@@ -129,7 +140,7 @@ export default function Suspects() {
           </div>
         </div>
         <button className="play" onClick={() => handleClick(true)}>
-          Unlock the clues to get to the murderer!
+          Start the Quiz to Unlock the Clues
         </button>{" "}
         {isCluesListVisible && (
           <ul>
@@ -139,11 +150,14 @@ export default function Suspects() {
           </ul>
         )}
         {isPlaying && <Quiz closePopUp={handleClosePopup} onFinish={handleFinish} />}
-        <button type="button" onClick={() => router.push("/newspaper")}>
+        <br/>
+         
+        <button className="guess-button" type="button" onClick={() => router.push("/reveal")}>
+          Ready to take a guess? Click here.
+        </button> 
+        
+        <button className="back-button "type="button" onClick={() => router.push("/newspaper")}>
           Back
-        </button>
-        <button type="button" onClick={() => router.push("/reveal")}>
-          Are you ready to take a gues? Click here.
         </button>
       </div>
     </div>
