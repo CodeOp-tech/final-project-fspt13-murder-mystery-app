@@ -25,7 +25,7 @@ export default function Cases() {
           <button
             type="button"
             className="work-case"
-            onClick={() => router.push("/suspects")}
+            onClick={() => router.push("/newspaper")}
           >
             Work this case
           </button>

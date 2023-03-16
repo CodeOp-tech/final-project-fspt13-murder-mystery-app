@@ -1,9 +1,10 @@
 import { useState } from "react";
-import Suspects from "./suspects";
+import { useRouter } from "next/router";
 
 export default function Reveal() {
   const [isKiller, setIsKiller] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
+  const router = useRouter();
 
   function handleRadioChange(event) {
     setSelectedValue(event.target.value);
@@ -14,16 +15,20 @@ export default function Reveal() {
     if (selectedValue === "Tom Davies") {
       setIsKiller(true);
     } else {
-      alert("That's not right, please try again.");
-      window.location.reload();
+      alert("That's not right, please try again");
     }
   }
 
   return (
     <>
+      <div>
+        <button type="button" onClick={() => router.push("/")}>
+          Home
+        </button>
+      </div>
       <div className="reveal">
-        <h1>Reveal</h1>
-        <h3>Who killed Robert Thompson?</h3>
+        <h1>Who killed Robert Thompson?</h1>
+
         <form onSubmit={revealKiller}>
           <input
             type="radio"
@@ -32,6 +37,11 @@ export default function Reveal() {
             onChange={handleRadioChange}
           />{" "}
           Emma Johnson
+          <img
+            src="../Pictures/emmajohnson.jpg"
+            alt="emmajohnson"
+            className="reveal-pic-susp"
+          />
           <input
             type="radio"
             value="Jack Wilson"
@@ -39,6 +49,11 @@ export default function Reveal() {
             onChange={handleRadioChange}
           />{" "}
           Jack Wilson
+          <img
+            src="../Pictures/jackwilson.jpg"
+            alt="jackwilson"
+            className="reveal-pic-susp1"
+          />
           <input
             type="radio"
             value="Karen Thompson"
@@ -46,6 +61,11 @@ export default function Reveal() {
             onChange={handleRadioChange}
           />{" "}
           Karen Thompson
+          <img
+            src="../Pictures/KarenThompson.jpg"
+            alt="karenthompson"
+            className="reveal-pic-susp2"
+          />
           <input
             type="radio"
             value="Tom Davies"
@@ -53,18 +73,31 @@ export default function Reveal() {
             onChange={handleRadioChange}
           />{" "}
           Tom Davies
-          <button type="submit">Submit</button>
+          <img
+            src="../Pictures/tomdavies.jpg"
+            alt="tomdavies"
+            className="reveal-pic-susp1"
+          />
+          <br></br>
+          <br></br>
+          <button type="submit" className="reveal-btn">
+            Submit
+          </button>
         </form>
-
+        <br></br>
+        <br></br>
         <div>
           {isKiller && (
-            <div>
-              Congratulations! You caught the murderer!
+            <div className="reveal-killer">
               <img
-                src="../Pictures/tomdavies.jpg"
+                src="https://static01.nyt.com/images/2013/03/07/arts/07SHERLOCK/07SHERLOCK-superJumbo.jpg"
                 className="img-reveal"
                 alt="tomdavies"
               />
+              <p className="reveal-paragraph">
+                Congratulations, Sherlock! You caught the killer.<br></br>
+                Thanks to you Tom Davies is now in jail.
+              </p>
             </div>
           )}
         </div>
