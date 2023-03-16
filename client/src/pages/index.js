@@ -38,7 +38,11 @@ export default function Home() {
             the world of mystery and intrigue. <br></br>
             With our murder mystery app, you're the hero of the story – and it's
             up to you to catch the killer before they strike again.<br></br>
-            <button type="button" onClick={() => router.push("/cases")}>
+            <button
+              type="button"
+              className="start"
+              onClick={() => router.push("/cases")}
+            >
               {" "}
               Start Now!
             </button>
