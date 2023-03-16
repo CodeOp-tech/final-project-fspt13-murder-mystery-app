@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 
 export default function Quiz({ closePopUp, onFinish }) {
   const [selectedValue, setSelectedValue] = useState("easy");
+  console.log("check levels", selectedValue)
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
@@ -64,6 +65,7 @@ export default function Quiz({ closePopUp, onFinish }) {
             score: prev.score + 1,
             correctAnswers: prev.correctAnswers + 1,
             totalClues: Math.floor(prev.correctAnswers / 2),
+            //add score as percentage
           }
         : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
     );
@@ -72,15 +74,19 @@ export default function Quiz({ closePopUp, onFinish }) {
 
   function handleClue() {
     const levels = {
-      easy: 10,
+      easy: 1,
       intermediate: 15,
       hard: 20
+  
     }
     const isCluesListVisible = result.correctAnswers >= levels[selectedValue]
 
     onFinish(isCluesListVisible)
+    
   }
 
+   const isFinished = result.correctAnswers + result.wrongAnswers === questions.length 
+   
   const onAnswerSelected = (isCorrect, index) => {
     setSelectedAnswerIndex(index);
     if (isCorrect === true) {
@@ -94,15 +100,16 @@ export default function Quiz({ closePopUp, onFinish }) {
 
   const addZero = (number) => (number > 9 ? number : `0${number}`);
 
-  function handleSubmit() {
-    e.preventDefault();
-  }
+  // function handleSubmit() {
+  //   e.preventDefault();
+  // }
 
   function handleRadioChange(event) {
+    console.log(event.target.value)
     setSelectedValue(event.target.value);
   }
 
-  const isFinished = result.correctAnswers + result.wrongAnswers === questions.length
+ 
 
   return (
     <>
@@ -114,7 +121,7 @@ export default function Quiz({ closePopUp, onFinish }) {
               {!isFinished ? (
                 <div>
                   <div>
-                    <form onSubmit={handleSubmit}>
+                    <form >
                       <input
                         type="radio"
                         value="easy"
@@ -141,6 +148,7 @@ export default function Quiz({ closePopUp, onFinish }) {
                       Advanced
                       {/* <button type="submit">Submit</button> */}
                     </form>
+                    <br/>
                   </div>
                   <div>
                     {/* <button className="play" onClick={closePopUp}>
@@ -191,8 +199,8 @@ export default function Quiz({ closePopUp, onFinish }) {
                         ? "Finish"
                         : "Next"}
                     </button>
-                    <button className="play" onClick={closePopUp}>
-                      X
+                    <button className="play2" onClick={closePopUp}>
+                      Close Quiz
                     </button>{" "}
                   </div>
                 </div>
