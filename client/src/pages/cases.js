@@ -2,14 +2,15 @@ import { useRouter } from "next/router";
 
 export default function Cases() {
   const router = useRouter();
+
   return (
     <>
-      <h1>Case Choice</h1>
+      <h1 className="case-title">The Victims</h1>
       <div className="cases">
         <img src="../Pictures/victim1.jpg" alt="robert" />
         <div className="cases-content">
           <h4>Robert Thompson</h4>
-          <h5>Javascript beginner</h5>
+
           <p className="case-intro">
             Robert Thompson was a wealthy businessman in Oakville who owned a
             successful real estate firm.<br></br>
@@ -24,12 +25,14 @@ export default function Cases() {
           <button
             type="button"
             className="work-case"
-            onClick={() => router.push("/newspaper")}
+            onClick={() => router.push("/suspects")}
           >
             Work this case
           </button>
         </div>
       </div>
+      <br></br>
+      <br></br>
       <button type="button" onClick={() => router.push("/")}>
         Back
       </button>

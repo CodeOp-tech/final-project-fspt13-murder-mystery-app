@@ -220,7 +220,7 @@ body {
   margin: -263px 0 0 -358px;
   opacity: 1;
 
-  /* Configure the animation for Firefox */
+
   animation-duration: 2s;
   animation-name: spin;
   animation-timing-function: linear;
@@ -232,6 +232,7 @@ body {
     -webkit-transform: scale(0.2) rotate(0deg);
     -moz-transform: scale(0.2) rotate(0deg);
   }
+
   100% {
     opacity: 1;
     margin: -263px 0 0 -358px;
@@ -438,4 +439,13 @@ button {
 
 .play {
   display: block;
+}
+
+.case-title {
+  color: white;
+  font-family: "Special Elite", cursive;
+  font-size: 54px;
+  text-align: center;
+  letter-spacing: 0.5rem;
+  text-shadow: 2px 2px 8px #000000;
 }
