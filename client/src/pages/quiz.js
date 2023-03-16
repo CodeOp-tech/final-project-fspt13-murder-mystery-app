@@ -1,23 +1,10 @@
-import { useRouter } from "next/router";
 import { React, useState, useEffect } from "react";
-import Tip1 from "./components/tip1";
-import Suspects from "./suspects";
 
-export default function Quiz({ closePopUp }) {
-  const router = useRouter();
-  const [clues, setClues] = useState([
-    `Witnesses reported seeing a person wearing a dark hoodie and jeans leaving 
-  the office building around the time of the murder. The person was speaking on the phone. 
-  The police believe that this person may have been involved in the crime.`,
-    `The police found a cigarette butt in the crime scene 
-  suggesting that the murderer might be a smoker`,
-  ]);
-  const [displayClue, setDisplayClue] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("");
+export default function Quiz({ closePopUp, onFinish }) {
+  const [selectedValue, setSelectedValue] = useState("easy");
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
-  const [showResult, setShowResult] = useState(false);
   const [result, setResult] = useState({
     score: 0,
     correctAnswers: 0,
@@ -80,13 +67,19 @@ export default function Quiz({ closePopUp }) {
           }
         : { ...prev, wrongAnswers: prev.wrongAnswers + 1 }
     );
-    if (currentQuestion !== questions.length - 1) {
-      setCurrentQuestion((prev) => prev + 1);
-    } else {
-      setCurrentQuestion(0);
-      setShowResult(true);
-    }
+    setCurrentQuestion((prev) => prev + 1);
   };
+
+  function handleClue() {
+    const levels = {
+      easy: 10,
+      intermediate: 15,
+      hard: 20
+    }
+    const isCluesListVisible = result.correctAnswers >= levels[selectedValue]
+
+    onFinish(isCluesListVisible)
+  }
 
   const onAnswerSelected = (isCorrect, index) => {
     setSelectedAnswerIndex(index);
@@ -105,32 +98,11 @@ export default function Quiz({ closePopUp }) {
     e.preventDefault();
   }
 
-  function handleClue() {
-    if (result.correctAnswers === 10) {
-      setDisplayClue(true);
-    }
-  }
-
-  // function handleClue() {
-
-  //   if (selectedValue === "easy") {
-  //     setLevel("easy")
-  //     // if ((result.correctAnswers = 10 && result.wrongAnswers <= 20)) {
-  //     //   clues.map((clue) => clue);
-  //     }
-  //   } else if (selectedValue === "intermediate") {
-  //     // if ((result.correctAnswers = 15 && result.wrongAnswers <= 15)) {
-  //     //   clues.map((clue) => clue);
-  //     }
-  //   } else if (selectedValue === "intermediate") {
-  //     if ((result.correctAnswers = 20 && result.wrongAnswers <= 10)) {
-  //       clues.map((clue) => clue);
-  //     }
-  //   }
-  // }
   function handleRadioChange(event) {
     setSelectedValue(event.target.value);
   }
+
+  const isFinished = result.correctAnswers + result.wrongAnswers === questions.length
 
   return (
     <>
@@ -138,16 +110,8 @@ export default function Quiz({ closePopUp }) {
       {status === "success" && (
         <>
           <div className="body-quiz">
-            <div>
-              {" "}
-              <ul>
-                {clues.map((clue, index) => (
-                  <li key={index}>{clue}</li>
-                ))}
-              </ul>
-            </div>
             <div className="quiz-container">
-              {!showResult ? (
+              {!isFinished ? (
                 <div>
                   <div>
                     <form onSubmit={handleSubmit}>
@@ -155,6 +119,7 @@ export default function Quiz({ closePopUp }) {
                         type="radio"
                         value="easy"
                         name="selection"
+                        checked={selectedValue === 'easy'}
                         onChange={handleRadioChange}
                       />{" "}
                       Easy
@@ -162,6 +127,7 @@ export default function Quiz({ closePopUp }) {
                         type="radio"
                         value="intermediate"
                         name="selection"
+                        checked={selectedValue === 'intermediate'}
                         onChange={handleRadioChange}
                       />{" "}
                       Intermediate
@@ -169,16 +135,17 @@ export default function Quiz({ closePopUp }) {
                         type="radio"
                         value="advanced"
                         name="selection"
+                        checked={selectedValue === 'advanced'}
                         onChange={handleRadioChange}
                       />{" "}
                       Advanced
-                      <button type="submit">Submit</button>
+                      {/* <button type="submit">Submit</button> */}
                     </form>
                   </div>
                   <div>
-                    <button className="play" onClick={closePopUp}>
+                    {/* <button className="play" onClick={closePopUp}>
                       X
-                    </button>{" "}
+                    </button>{" "} */}
                     <span className="active-question-no">
                       {addZero(currentQuestion + 1)}
                     </span>
@@ -197,7 +164,7 @@ export default function Quiz({ closePopUp }) {
                           onClick={() =>
                             onAnswerSelected(answerOption.isCorrect, index)
                           }
-                          key={answerOption}
+                          key={index}
                           className={
                             selectedAnswerIndex === index
                               ? "selected-answer"
@@ -224,6 +191,9 @@ export default function Quiz({ closePopUp }) {
                         ? "Finish"
                         : "Next"}
                     </button>
+                    <button className="play" onClick={closePopUp}>
+                      X
+                    </button>{" "}
                   </div>
                 </div>
               ) : (
@@ -252,13 +222,6 @@ export default function Quiz({ closePopUp }) {
                   >
                     Give me my clues and let me solve this case!
                   </button>
-                  {displayClue && (
-                    <ul>
-                      {clues.map((clue, index) => (
-                        <li key={index}>{clue}</li>
-                      ))}
-                    </ul>
-                  )}
                 </div>
               )}
             </div>
