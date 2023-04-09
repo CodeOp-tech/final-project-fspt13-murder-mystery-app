@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 
 export default function Quiz({ closePopUp, onFinish }) {
   const [selectedValue, setSelectedValue] = useState("easy");
-  console.log("check levels", selectedValue)
+  console.log("check levels", selectedValue);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
@@ -74,19 +74,18 @@ export default function Quiz({ closePopUp, onFinish }) {
 
   function handleClue() {
     const levels = {
-      easy: 1,
-      intermediate: 15,
-      hard: 20
-  
-    }
-    const isCluesListVisible = result.correctAnswers >= levels[selectedValue]
+      easy: 2,
+      intermediate: 4,
+      hard: 6,
+    };
+    const isCluesListVisible = result.correctAnswers >= levels[selectedValue];
 
-    onFinish(isCluesListVisible)
-    
+    onFinish(isCluesListVisible);
   }
 
-   const isFinished = result.correctAnswers + result.wrongAnswers === questions.length 
-   
+  const isFinished =
+    result.correctAnswers + result.wrongAnswers === questions.length;
+
   const onAnswerSelected = (isCorrect, index) => {
     setSelectedAnswerIndex(index);
     if (isCorrect === true) {
@@ -105,11 +104,9 @@ export default function Quiz({ closePopUp, onFinish }) {
   // }
 
   function handleRadioChange(event) {
-    console.log(event.target.value)
+    console.log(event.target.value);
     setSelectedValue(event.target.value);
   }
-
- 
 
   return (
     <>
@@ -121,12 +118,12 @@ export default function Quiz({ closePopUp, onFinish }) {
               {!isFinished ? (
                 <div>
                   <div>
-                    <form >
+                    <form>
                       <input
                         type="radio"
                         value="easy"
                         name="selection"
-                        checked={selectedValue === 'easy'}
+                        checked={selectedValue === "easy"}
                         onChange={handleRadioChange}
                       />{" "}
                       Easy
@@ -134,7 +131,7 @@ export default function Quiz({ closePopUp, onFinish }) {
                         type="radio"
                         value="intermediate"
                         name="selection"
-                        checked={selectedValue === 'intermediate'}
+                        checked={selectedValue === "intermediate"}
                         onChange={handleRadioChange}
                       />{" "}
                       Intermediate
@@ -142,13 +139,13 @@ export default function Quiz({ closePopUp, onFinish }) {
                         type="radio"
                         value="advanced"
                         name="selection"
-                        checked={selectedValue === 'advanced'}
+                        checked={selectedValue === "advanced"}
                         onChange={handleRadioChange}
                       />{" "}
                       Advanced
                       {/* <button type="submit">Submit</button> */}
                     </form>
-                    <br/>
+                    <br />
                   </div>
                   <div>
                     {/* <button className="play" onClick={closePopUp}>

@@ -12,7 +12,6 @@ body {
   background-size: cover;
 }
 
-
 .body-quiz {
   font-family: "Special Elite", cursive;
   background: linear-gradient(90.04deg, #e1210485 0.03%, #360b12b3 99.96%);
@@ -311,6 +310,14 @@ button {
   text-align: center;
 }
 
+.suspects-intro {
+  padding: 0%;
+  color: white;
+  font-size: 36px;
+  text-align: center;
+  margin: auto 0;
+}
+
 .suspects-title {
   text-align: center;
   font-size: 70px;
@@ -455,11 +462,10 @@ button {
   display: flex;
   cursor: pointer;
   text-align: center;
-  margin:0 auto;
-  
+  margin: 0 auto;
 }
 
-.play:hover{
+.play:hover {
   cursor: pointer;
   background-color: #8a3737bd;
   font-family: "Special Elite", cursive;
@@ -474,13 +480,13 @@ button {
   display: block;
   cursor: pointer;
   text-align: center;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 .guess-button {
   display: flex;
   text-align: center;
-  margin:0 auto;
+  margin: 0 auto;
   margin-bottom: -40px;
   border: solid #6c6c6d 2px;
   margin-top: 5px;
@@ -491,13 +497,12 @@ button {
 .guess-button:hover {
   display: flex;
   text-align: center;
-  margin:0 auto;
+  margin: 0 auto;
   margin-bottom: -35px;
   border: solid #6c6c6d 2px;
   margin-top: 5px;
   background-color: #8a3737bd;
 }
-
 
 .back-button {
   display: inherit;
@@ -505,7 +510,7 @@ button {
   border: solid #6c6c6d 2px;
   background-color: #050404;
   font-size: 15px;
-  margin-left:32px
+  margin-left: 32px;
 }
 
 .back-button:hover {
@@ -515,19 +520,17 @@ button {
   background-color: #8a3737bd;
 }
 
-
 .quiz-container button.play2 {
   background: linear-gradient(90.04deg, #241414e5 0.03%, #b00101fc 99.96%);
   border-radius: 9px;
   font-size: 13px;
   color: #ffffff;
-  
+
   outline: none;
   border: none;
   cursor: pointer;
-  
+
   font-family: "Special Elite", cursive;
-  
 }
 
 .case-title {
@@ -641,4 +644,3 @@ button {
   color: white;
   border: 2px solid black;
 }
-

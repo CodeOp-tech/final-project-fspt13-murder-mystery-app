@@ -8,12 +8,14 @@ export default function Suspects() {
   const [isCluesListVisible, setIsCluesListVisible] = useState(false);
 
   const clues = [
-    `Witnesses reported seeing a person wearing a dark hoodie and jeans leaving 
-  the office building around the time of the murder. The person was speaking on the phone. 
+    `Witnesses reported seeing a person speaking on the phone.
   The police believe that this person may have been involved in the crime.`,
     `The police found a cigarette butt in the crime scene 
   suggesting that the murderer might be a smoker`,
-  ]
+    `Robert’s journal was found on the crime scene containing an entry where Robert seemed to feel pressured by his business partner to sell the business to Jake Wilson`,
+    `Police found that by the phone location Tom Davies was at the crime scene when the crime was committed.`,
+    `Autopsy reveals that the murderer is right-handed`,
+  ];
 
   function handleClick(isPlaying) {
     setIsPlaying(isPlaying);
@@ -23,20 +25,19 @@ export default function Suspects() {
   }
 
   function handleFinish(isCluesListVisible) {
-    setIsPlaying(false)
-    setIsCluesListVisible(isCluesListVisible)
+    setIsPlaying(false);
+    setIsCluesListVisible(isCluesListVisible);
   }
 
   return (
     <div>
       <div className="suspects_container">
         <h1 className="suspects-title">Suspects</h1>
-        <br/>
+        <br />
         <p className="suspects-intro">
-          Here you can see the four suspects that the police believe are linked to the death of Robert.  
-
+          Here you can see the four suspects that the police believe are linked
+          to the death of Robert.
         </p>
-
         <div className="suspects">
           <div className="suspect1">
             <img
@@ -48,8 +49,8 @@ export default function Suspects() {
             <p className="suspect-intro">
               Robert's former assistant who was fired from her job after she was
               caught embezzling money from the company.
-              <br/>
-              <br/>
+              <br />
+              <br />
               She felt wronged by Robert and believed he deserved to die.
               <br></br>
             </p>
@@ -73,8 +74,8 @@ export default function Suspects() {
             <p className="suspect-intro">
               A rival businessman who was envious of Robert's success and saw
               him as a threat to his own business.
-              <br/>
-              <br/>
+              <br />
+              <br />
               He believed that killing Robert would eliminate his competition.
               <br></br>
             </p>
@@ -96,11 +97,13 @@ export default function Suspects() {
             />
             <h2>Karen Thompson</h2>
             <p className="suspect-intro">
-              Robert's wife who was unhappy in their marriage due to Robert's gambling addiction and wanted to
-              collect his life insurance policy.
-              <br/>
-              <br/>
-              She saw his death as a way to clear the debt he'd built up in her name.<br></br>
+              Robert's wife who was unhappy in their marriage due to Robert's
+              gambling addiction and wanted to collect his life insurance
+              policy.
+              <br />
+              <br />
+              She saw his death as a way to clear the debt he'd built up in her
+              name.<br></br>
             </p>
             <ul className="susp-list">
               <li>Date of birth: 21/02/1964</li>
@@ -123,8 +126,8 @@ export default function Suspects() {
             <p className="suspect-intro">
               Robert's friend and business partner who was struggling
               financially and owed a lot of money to Robert.
-              <br/>
-              <br/>
+              <br />
+              <br />
               He saw killing Robert as a way to solve his financial problems.
               <br></br>
             </p>
@@ -149,14 +152,22 @@ export default function Suspects() {
             ))}
           </ul>
         )}
-        {isPlaying && <Quiz closePopUp={handleClosePopup} onFinish={handleFinish} />}
-        <br/>
-         
-        <button className="guess-button" type="button" onClick={() => router.push("/reveal")}>
+        {isPlaying && (
+          <Quiz closePopUp={handleClosePopup} onFinish={handleFinish} />
+        )}
+        <br />
+        <button
+          className="guess-button"
+          type="button"
+          onClick={() => router.push("/reveal")}
+        >
           Ready to take a guess? Click here.
-        </button> 
-        
-        <button className="back-button "type="button" onClick={() => router.push("/newspaper")}>
+        </button>
+        <button
+          className="back-button "
+          type="button"
+          onClick={() => router.push("/newspaper")}
+        >
           Back
         </button>
       </div>
